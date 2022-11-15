@@ -12,7 +12,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>MrGimme</ApplicationTitle>
+		<ApplicationTitle>MuseoOmeroApp</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.mrgimme</ApplicationId>
