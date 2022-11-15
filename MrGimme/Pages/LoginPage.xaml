@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="MrGimme.Pages.LoginPage"
+            Title="LoginPage">
+
+    <Grid>
+        <!-- Center of screen -->
+        <Grid RowDefinitions="80,*,120">
+            <ScrollView Grid.Row="1" VerticalOptions="Center">
+                <VerticalStackLayout 
+                        VerticalOptions="Start"
+                        HorizontalOptions="Center"
+                        Margin="32,0,32,0"
+                        Spacing="5">
+
+
+
+                    <BoxView HeightRequest="50"
+                             Color="Transparent"></BoxView>
+
+                    <Image Source="logo_museo_omero_small_green.png"
+                HeightRequest="100"
+                Margin="0,20,0,10"/>
+
+
+                    <Label Text="Welcome Back!"
+                HorizontalOptions="Center"
+                FontSize="Large"
+                FontFamily="Lato"
+                TextColor="#1b1b1b"
+                >
+                    </Label>
+
+                    <Label Text="Please enter your credentials below to start using the app."
+                HorizontalOptions="Center"
+                FontSize="16"
+                FontFamily="LatoItalic"
+                TextColor="LightSlateGrey">
+                    </Label>
+
+                    <Label Text="Username"
+                Margin="0,20,0,0"
+                FontFamily="Lato"
+                FontSize="22"
+                TextColor="#1b1b1b"></Label>
+
+                    <Grid ColumnDefinitions="0,auto,*,36"
+                ColumnSpacing="16">
+
+                        <Grid Grid.Column="1">
+                            <Image  Source="account.png" WidthRequest="46"></Image>
+                            <Image x:Name="UsernameIcon" Source="account.png" WidthRequest="46"></Image>
+                        </Grid>
+                        <Border x:Name="UsernameBorder"
+                            Grid.Column="2"
+                            Padding="12,4,4,4"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 999">
+
+
+                            <Entry x:Name="UsernameEntry"
+                        Placeholder="Username" 
+                        FontSize="Small"
+                        Focused="UsernameEntry_Focused"
+                        Unfocused="UsernameEntry_Unfocused"></Entry>
+                        </Border>
+                    </Grid>
+
+                    <Label Text="Password"
+                Margin="0,20,0,0"
+                FontFamily="LatoLt"
+                FontSize="22"
+                TextColor="#1b1b1b"></Label>
+
+                    <Grid ColumnDefinitions="0,auto,*,36"
+                ColumnSpacing="16">
+                        <Grid Grid.Column="1">
+                            <Image  Source="shield.png" WidthRequest="46"></Image>
+                            <Image x:Name="PasswordIcon" Source="shield.png" WidthRequest="46"></Image>
+                        </Grid>
+
+                        <Border x:Name="PasswordBorder"
+                            Grid.Column="2"
+                            StrokeThickness="1"
+                            Padding="12,4,4,4"
+                            StrokeShape="RoundRectangle 999">
+
+                            <Entry x:Name="PasswordEntry"
+                        Grid.Column="2" 
+                           Placeholder="Password" 
+                    FontSize="Small"
+                    IsPassword="True"
+                    Focused="PasswordEntry_Focused"
+                    Unfocused="PasswordEntry_Unfocused"></Entry>
+                        </Border>
+
+                    </Grid>
+
+                    <Button x:Name="LoginButton"
+                Text="Login"
+                Margin="0,40,0,12"
+                HeightRequest="52"
+                WidthRequest="240"
+                FontSize="Medium"
+                BackgroundColor="#09713c"
+                CornerRadius="26"
+                    BorderWidth="0"
+                    BorderColor="#09713c"
+                Clicked="LoginButton_Clicked"
+                Pressed="LoginButton_Pressed"
+                Released="LoginButton_Released">
+
+                    </Button>
+
+                    <BoxView HeightRequest="60"
+                             Color="Transparent"></BoxView>
+
+
+
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+
+        <!-- Top and Botton waves -->
+        <Grid RowDefinitions="50,auto,*,auto,100">
+            <Image Grid.Row="0" 
+            Source="block.png" 
+                   ScaleX="100"
+            HorizontalOptions="Fill"/>
+            <Image Grid.Row="1" 
+            Source="wave2.png" 
+            ScaleX="1.02"                   
+            HorizontalOptions="FillAndExpand"/>
+           
+            
+            <Image Grid.Row="3" 
+            Source="wave.png" 
+            ScaleX="1.02"                   
+            HorizontalOptions="FillAndExpand"/>
+
+            <Image Grid.Row="4" 
+            Source="block.png" 
+                   ScaleX="100"
+                   ScaleY="1.05"
+            HorizontalOptions="Fill"/>
+        </Grid>
+
+        <!--Univpm Logo-->
+        <!--<Grid RowDefinitions="*,auto,10">
+            <Image Grid.Row="1" 
+            Source="univpm_logo_white.png" 
+                   HeightRequest="100"
+            HorizontalOptions="FillAndExpand"/>
+        </Grid>-->
+            
+        <!-- Loading screen -->
+        <Grid x:Name="Loading" IsVisible="False">
+            
+        <BoxView
+            Color="Black"
+            Opacity="0.3">
+        </BoxView>
+
+        <ActivityIndicator IsRunning="true"
+                   Color="#08703b" 
+                               Scale="1"
+                           WidthRequest="70"/>
+        </Grid>
+    </Grid>
+</ContentPage>  

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1440"
+   height="300"
+   version="1.1"
+   id="svg38"
+   sodipodi:docname="wave2.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview40"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:zoom="2.4513035"
+     inkscape:cx="31.003913"
+     inkscape:cy="93.827631"
+     inkscape:window-width="2560"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg_5" />
+  <defs
+     id="defs26">
+    <clipPath
+       id="clip1">
+      <path
+         id="svg_1"
+         d="M -6,-9 H 1434 V 666.75 H -6 Z m 0,0" />
+    </clipPath>
+    <clipPath
+       id="clip2">
+      <path
+         id="svg_2"
+         d="M 0,28 H 1428 V 314.25 H 0 Z m 0,0" />
+    </clipPath>
+  </defs>
+  <g
+     id="g36">
+    <title
+       id="title28">Layer 1</title>
+    <g
+       id="surface1">
+      <g
+         id="svg_5"
+         clip-rule="nonzero"
+         clip-path="url(#clip2)"
+         transform="matrix(-1.0084034,0,0,-1,1440,305.25)">
+        <path
+           id="svg_6"
+           fill="#08703b"
+           fill-rule="nonzero"
+           d="M -9.4576285,11.188098 38.312016,74.70313 c 29.477319,37.3789 88.431954,110.74218 147.386594,111.03906 58.95077,-0.29688 117.90541,-73.66016 176.86004,-63.44922 58.95464,10.60547 117.90928,105.78125 176.86392,116.39062 58.95464,10.21094 117.90928,-63.15234 176.86392,-84.66796 58.95463,-21.11719 117.90927,10.60937 176.86391,31.72656 58.95464,21.51172 117.9093,31.42578 176.8639,37.07812 58.9547,5.25391 117.9054,5.25391 176.8601,-10.60937 58.9546,-15.85938 159.2297,-63.2501 186.2578,-83.0646 l 4.3254,-3.17098 75.5307,179.27464 -71.3953,5.76161 L 1246.8744,323.25 H 1070.0143 893.1504 716.28649 539.42257 362.55865 185.69861 38.312016 l -43.1965632,-1.15385 z"
+           sodipodi:nodetypes="cccccccccsccccccccccccc"
+           style="stroke-width:0.995407" />
+      </g>
+      <circle
+         id="path268"
+         style="fill:#000000;stroke:#000000"
+         cx="669.23077"
+         cy="280.38461"
+         r="0.58088011" />
+      <circle
+         id="path270"
+         style="fill:#000000;stroke:#000000"
+         cx="163.84616"
+         cy="103.84615"
+         r="0.58088011" />
+    </g>
+  </g>
+</svg>
