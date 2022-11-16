@@ -1,18 +1,29 @@
 using MrGimme.api;
+using MuseoOmeroApp.ModelView;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace MrGimme.Pages;
 
 public partial class LoginPage : ContentPage
 {
-    static ApiService api=new ApiService();
+    static ApiService api=new ();
 	public LoginPage()
 	{
         InitializeComponent();
+        BindingContext=new LoginPageModelView();
     }
     bool loginInProgress=false;
     private async void LoginButton_Clicked(object sender, EventArgs e)
     {
+        ((LoginPageModelView)BindingContext).CenterScreenGrid=new RowDefinitionCollection()
+        {
+            new RowDefinition { Height = 80 * LoginPageModelView.DensityFactor },
+            new RowDefinition { Height = GridLength.Star },
+            new RowDefinition { Height = 120 * LoginPageModelView.DensityFactor }
+        }; 
+        Debug.WriteLine("Density --> " + DeviceDisplay.MainDisplayInfo.Density);
+        return;
         if (loginInProgress)
         {
             return;

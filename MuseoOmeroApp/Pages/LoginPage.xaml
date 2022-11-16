@@ -6,12 +6,13 @@
 
     <Grid>
         <!-- Center of screen -->
-        <Grid RowDefinitions="80,*,120">
+
+        <Grid RowDefinitions="{Binding CenterScreenGrid}">
             <ScrollView Grid.Row="1" VerticalOptions="Center">
                 <VerticalStackLayout 
                         VerticalOptions="Start"
                         HorizontalOptions="Center"
-                        Margin="32,0,32,0"
+                        Margin="{Binding ContentMargin}"
                         Spacing="5">
 
 
@@ -23,8 +24,7 @@
                 HeightRequest="100"
                 Margin="0,20,0,10"/>
 
-
-                    <Label Text="Welcome Back!"
+                    <Label Text="Welcome back!"
                 HorizontalOptions="Center"
                 FontSize="Large"
                 FontFamily="Lato"
@@ -39,13 +39,14 @@
                 TextColor="LightSlateGrey">
                     </Label>
 
+                    
                     <Label Text="Username"
                 Margin="0,20,0,0"
                 FontFamily="Lato"
                 FontSize="22"
                 TextColor="#1b1b1b"></Label>
 
-                    <Grid ColumnDefinitions="0,auto,*,36"
+                    <Grid ColumnDefinitions="0,auto,*,24"
                 ColumnSpacing="16">
 
                         <Grid Grid.Column="1">
@@ -67,13 +68,14 @@
                         </Border>
                     </Grid>
 
+                    
                     <Label Text="Password"
                 Margin="0,20,0,0"
                 FontFamily="LatoLt"
                 FontSize="22"
                 TextColor="#1b1b1b"></Label>
 
-                    <Grid ColumnDefinitions="0,auto,*,36"
+                    <Grid ColumnDefinitions="0,auto,*,24"
                 ColumnSpacing="16">
                         <Grid Grid.Column="1">
                             <Image  Source="shield.png" WidthRequest="46"></Image>
@@ -97,6 +99,7 @@
 
                     </Grid>
 
+                    
                     <Button x:Name="LoginButton"
                 Text="Login"
                 Margin="0,40,0,12"
@@ -123,17 +126,18 @@
         </Grid>
 
         <!-- Top and Botton waves -->
-        <Grid RowDefinitions="50,auto,*,auto,100">
+        <Grid RowDefinitions="{Binding WavesGrid}">
             <Image Grid.Row="0" 
             Source="block.png" 
                    ScaleX="100"
+                   ScaleY="1.02"
             HorizontalOptions="Fill"/>
             <Image Grid.Row="1" 
             Source="wave2.png" 
             ScaleX="1.02"                   
             HorizontalOptions="FillAndExpand"/>
-           
-            
+
+
             <Image Grid.Row="3" 
             Source="wave.png" 
             ScaleX="1.02"                   
@@ -153,16 +157,16 @@
                    HeightRequest="100"
             HorizontalOptions="FillAndExpand"/>
         </Grid>-->
-            
+
         <!-- Loading screen -->
         <Grid x:Name="Loading" IsVisible="False">
-            
-        <BoxView
+
+            <BoxView
             Color="Black"
             Opacity="0.3">
-        </BoxView>
+            </BoxView>
 
-        <ActivityIndicator IsRunning="true"
+            <ActivityIndicator IsRunning="true"
                    Color="#08703b" 
                                Scale="1"
                            WidthRequest="70"/>
