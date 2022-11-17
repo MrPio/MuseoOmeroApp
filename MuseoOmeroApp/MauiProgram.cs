@@ -1,6 +1,8 @@
-﻿using MrGimme.api;
+﻿using MuseoOmeroApp.api;
+using SkiaSharp.Views.Maui.Controls.Hosting;
+using Syncfusion.Maui.Core.Hosting;
 
-namespace MrGimme;
+namespace MuseoOmeroApp;
 
 public static class MauiProgram
 {
@@ -18,7 +20,11 @@ public static class MauiProgram
                 fonts.AddFont("Lato-Italic.ttf", "LatoItalic");
                 fonts.AddFont("Lato-Light.ttf", "LatoLight");
                 fonts.AddFont("Lato-LightItalic.ttf", "LatoLightItalic");
-            });
+
+                fonts.AddFont(filename: "materialdesignicons-webfont.ttf", alias: "MaterialDesignIcons");
+            })
+			.UseSkiaSharp();	
+		builder.ConfigureSyncfusionCore();
         return builder.Build();
 	}
 }

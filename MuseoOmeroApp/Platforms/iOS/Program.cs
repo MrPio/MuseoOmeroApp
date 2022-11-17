@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace MrGimme;
+namespace MuseoOmeroApp;
 
 public class Program
 {

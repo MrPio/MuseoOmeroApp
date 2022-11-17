@@ -3,8 +3,8 @@ using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Windows.Graphics;
 #endif
-using MrGimme.Pages;
-namespace MrGimme;
+using MuseoOmeroApp.Pages;
+namespace MuseoOmeroApp;
 
 public partial class App : Application
 {
@@ -26,7 +26,6 @@ public partial class App : Application
             appWindow.Resize(new SizeInt32(WindowWidth, WindowHeight));
 #endif
         });
-
-        MainPage = new LoginPage();
+        MainPage = new TabbedHome();
 	}
 }

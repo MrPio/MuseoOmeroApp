@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MuseoOmeroApp.Pages.TabbedHome"
+             xmlns:local="clr-namespace:MuseoOmeroApp.Pages"
+             Title="TabbedHome"
+            xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BarBackgroundColor="{StaticResource Tertiary}"
+            android:TabbedPage.IsSwipePagingEnabled="True"
+            android:TabbedPage.IsSmoothScrollEnabled="True"
+            >
+    <local:Home Title="Home" IconImageSource="shield"/>
+    
+</TabbedPage>

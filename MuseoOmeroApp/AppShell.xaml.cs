@@ -1,4 +1,4 @@
-﻿namespace MrGimme;
+﻿namespace MuseoOmeroApp;
 
 public partial class AppShell : Shell
 {

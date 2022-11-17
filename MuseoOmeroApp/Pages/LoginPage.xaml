@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            x:Class="MrGimme.Pages.LoginPage"
+             xmlns:effectsView="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+            x:Class="MuseoOmeroApp.Pages.LoginPage"
             Title="LoginPage">
 
     <Grid>
         <!-- Center of screen -->
-
-        <Grid RowDefinitions="{Binding CenterScreenGrid}">
+        <Grid RowDefinitions="{Binding CenterScreenGrid}" >
             <ScrollView Grid.Row="1" VerticalOptions="Center">
                 <VerticalStackLayout 
                         VerticalOptions="Start"
@@ -98,23 +98,24 @@
                         </Border>
 
                     </Grid>
+                    <effectsView:SfEffectsView TouchDownEffects="Ripple" FadeOutRipple="True" RippleBackground="#08703b">
 
-                    
-                    <Button x:Name="LoginButton"
-                Text="Login"
-                Margin="0,40,0,12"
-                HeightRequest="52"
-                WidthRequest="240"
-                FontSize="Medium"
-                BackgroundColor="#09713c"
-                CornerRadius="26"
-                    BorderWidth="0"
-                    BorderColor="#09713c"
-                Clicked="LoginButton_Clicked"
-                Pressed="LoginButton_Pressed"
-                Released="LoginButton_Released">
+                        <Button x:Name="LoginButton"
+                                Text="Login"
+                                Margin="0,40,0,12"
+                                HeightRequest="52"
+                                WidthRequest="240"
+                                FontSize="Medium"
+                                BackgroundColor="#09713c"
+                                CornerRadius="26"
+                                BorderWidth="0"
+                                BorderColor="#09713c"
+                                Clicked="LoginButton_Clicked"
+                                Pressed="LoginButton_Pressed"
+                                Released="LoginButton_Released">
 
-                    </Button>
+                        </Button>
+                    </effectsView:SfEffectsView>
 
                     <BoxView HeightRequest="60"
                              Color="Transparent"></BoxView>

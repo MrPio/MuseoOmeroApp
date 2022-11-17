@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace MrGimme;
+namespace MuseoOmeroApp;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

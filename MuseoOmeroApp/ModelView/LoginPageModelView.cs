@@ -31,11 +31,11 @@ namespace MuseoOmeroApp.ModelView
         { get; set; } = new()
         {
             #if ANDROID
-            new RowDefinition { Height = 50 * DensityFactor },
+            new RowDefinition { Height = 46 * DensityFactor },
             new RowDefinition { Height = GridLength.Auto },
             new RowDefinition { Height = GridLength.Star },
             new RowDefinition { Height = GridLength.Auto },
-            new RowDefinition { Height = 100 * DensityFactor }
+            new RowDefinition { Height = 92 * DensityFactor }
             #else
             new RowDefinition { Height = 50 },
             new RowDefinition { Height = GridLength.Auto },
@@ -46,6 +46,13 @@ namespace MuseoOmeroApp.ModelView
         };
 
         public Thickness ContentMargin
+#if ANDROID
+
         { get; set; } = new(32 * DensityFactor, 0,32 * DensityFactor, 0);
+#else
+        { get; set; } = new(32, 0,32, 0);
+
+#endif
+
     }
 }

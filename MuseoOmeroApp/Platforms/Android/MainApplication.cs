@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace MrGimme;
+namespace MuseoOmeroApp;
 
 [Application]
 public class MainApplication : MauiApplication

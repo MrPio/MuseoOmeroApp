@@ -1,4 +1,4 @@
-﻿using MrGimme.Models;
+﻿using MuseoOmeroApp.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace MrGimme.api
+namespace MuseoOmeroApp.api
 {
     public class ApiService
     {
