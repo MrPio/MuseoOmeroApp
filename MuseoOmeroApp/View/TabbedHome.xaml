@@ -11,5 +11,6 @@
             android:TabbedPage.IsSmoothScrollEnabled="True"
             >
     <local:Home Title="Home" IconImageSource="shield"/>
+    <local:Home Title="Home" IconImageSource="shield"/>
     
 </TabbedPage>

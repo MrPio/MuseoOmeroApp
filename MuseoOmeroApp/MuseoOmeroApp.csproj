@@ -35,7 +35,7 @@
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#08703b" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.png" Color="#08703b" BaseSize="1024,1024" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#08703b" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -52,7 +52,7 @@
 	  <AndroidResource Remove="Resources\Images\Nuova cartella\**" />
 	  <Compile Remove="Resources\Images\Nuova cartella\**" />
 	  <EmbeddedResource Remove="Resources\Images\Nuova cartella\**" />
-	  <MauiCss Remove="Resources\Images\Nuova cartella\**" />
+	  <MauiCss Remove="Resources\Images\Nuova cartella\**" />	
 	  <MauiImage Remove="Resources\Images\Nuova cartella\**" />
 	  <MauiXaml Remove="Resources\Images\Nuova cartella\**" />
 	  <None Remove="Resources\Images\Nuova cartella\**" />
@@ -73,22 +73,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Templates\RoundedEntry.xaml.cs">
+	  <Compile Update="View\Templates\RoundedEntry.xaml.cs">
 	    <DependentUpon>RoundedEntry.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\Home.xaml">
+	  <MauiXaml Update="View\Home.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\LoginPage.xaml">
+	  <MauiXaml Update="View\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\TabbedHome.xaml">
+	  <MauiXaml Update="View\TabbedHome.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Templates\RoundedEntry.xaml">
+	  <MauiXaml Update="View\Templates\FAB.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Templates\RoundedButton.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Templates\RoundedEntry.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

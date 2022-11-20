@@ -1,6 +1,6 @@
 using MuseoOmeroApp.api;
 using MuseoOmeroApp.Models;
-using MuseoOmeroApp.ModelView;
+using MuseoOmeroApp.ViewModel;
 using Newtonsoft.Json;
 using System.Diagnostics;
 

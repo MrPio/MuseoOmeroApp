@@ -13,7 +13,7 @@
     <ContentPage.BindingContext>
         <viewmodel:HomeModelView/>
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Content>
         <Grid>
             <!-- Top Bar -->
@@ -67,59 +67,47 @@
                 </Grid>
                 <Image Grid.Row="1" 
                         Source="top_bar" 
+                       ScaleX="1.02"
                         HorizontalOptions="Fill"/>
             </Grid>
 
 
-
-
-
-            <!-- Top & Bottom Waves and screen content-->
-            <Grid RowDefinitions="64,auto,*,auto,14">
-                <Image Grid.Row="0" 
-                    Source="block.png" 
-                           ScaleX="100"
-                           ScaleY="1.05"
-                    HorizontalOptions="Fill"/>
-                <Image Grid.Row="1" 
-                           ScaleX="1.02"
-                        Source="wave2" 
-                        HorizontalOptions="Fill"/>
-
-                <!-- Screen content-->
-                <Grid RowDefinitions="120,*"
-                            Grid.Row="2"
-                            RowSpacing="30">
-
-                    <!-- Center Big Icon -->
-                    <Frame
-                            Grid.Row="0"
-                            BorderColor="Transparent"
-                            BackgroundColor="{StaticResource Primary}"
-                            CornerRadius="999"
-                            WidthRequest="120"
-                            HeightRequest="120">
-                        <Label 
-                                FontFamily="MaterialDesignIcons" 
-                                Text="{x:Static helpers:IconFont.BagPersonal}"
-                                TextColor="{StaticResource White}"
-                                FontSize="64"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center">
-                        </Label>
-                    </Frame>
-
+            <!-- Screen content-->
+            <Grid RowDefinitions="64,*,28">
                     <ScrollView
-                            Grid.Row="1"
+                        Grid.Row="1"
+                        Padding="0,50,0,0"
                             Margin="30,0,30,0">
-                        <VerticalStackLayout>
-                            <Frame
-                                    BorderColor="Transparent"
-                                    BackgroundColor="#92FFFFFF"
-                                    CornerRadius="60">
-                                <VerticalStackLayout
-                                        Spacing="10">
-                                
+                        <VerticalStackLayout
+                            Spacing="20">
+                            <!-- Center Big Icon -->
+                        <Frame
+                            x:Name="BigIconFrame"
+                                Grid.Row="0"
+                                Opacity="0"
+                                BorderColor="Transparent"
+                                BackgroundColor="{StaticResource Primary}"
+                                CornerRadius="999"
+                                WidthRequest="110"
+                                HeightRequest="110">
+                            <Label 
+                                x:Name="BigIcon"
+                                FontFamily="MaterialDesignIcons" 
+                                    Text="{x:Static helpers:IconFont.BagPersonal}"
+                                    TextColor="{StaticResource White}"
+                                    FontSize="60"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center">
+                            </Label>
+                        </Frame>
+
+                        <Frame
+                                BorderColor="Transparent"
+                                BackgroundColor="#92FFFFFF"
+                                CornerRadius="60">
+                                <VerticalStackLayout 
+                                    Spacing="10">
+
                                     <StackLayout
                                         Orientation="Vertical"
                                         Spacing="10"
@@ -130,6 +118,28 @@
                                             </DataTemplate>
                                         </BindableLayout.ItemTemplate>
                                     </StackLayout>
+
+                                    <StackLayout
+                                        Orientation="Vertical"
+                                        Spacing="10"
+                                        BindableLayout.ItemsSource="{Binding ModelButton}">
+                                        <BindableLayout.ItemTemplate >
+                                            <DataTemplate >
+                                                <templates:RoundedButton/>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Orientation="Vertical"
+                                        Spacing="10"
+                                        BindableLayout.ItemsSource="{Binding ModelButton}">
+                                        <BindableLayout.ItemTemplate >
+                                            <DataTemplate >
+                                                <templates:RoundedButton/>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+
 
                                     <!-- Separator -->
                                     <Grid
@@ -174,21 +184,32 @@
                                 </VerticalStackLayout>
                             </Frame>
                         </VerticalStackLayout>
-
                     </ScrollView>
+            </Grid>
 
-                </Grid>
+            <!-- Top & Bottom Waves-->
+            <Grid x:Name="WavesGrid" RowDefinitions="100,auto,*,auto,34">
+                <Image x:Name="BlockTop" Grid.Row="0" 
+                    Source="block.png" 
+                           ScaleX="100"
+                           ScaleY="1.35"
+                    HorizontalOptions="Fill"/>
+                <Image Grid.Row="1" 
+                           ScaleX="1.02"
+                        Source="wave2" 
+                        HorizontalOptions="Fill"/>
 
                 <Image Grid.Row="3" 
                            ScaleX="1.02"
                         Source="wave" 
                         HorizontalOptions="Fill"/>
-                <Image Grid.Row="4" 
+                <Image Grid.Row="4"
                     Source="block.png" 
                            ScaleX="100"
                            ScaleY="1.05"
                     HorizontalOptions="Fill"/>
             </Grid>
+
 
             <!-- Startup Animation -->
             <skia:SKLottieView
@@ -203,7 +224,14 @@
             <Grid RowDefinitions="*,auto">
                 <Image Grid.Row="1" 
                         Source="bottom_bar" 
+                       ScaleX="1.02"
                         HorizontalOptions="Fill"/>
+            </Grid>
+            
+            <!-- FAB -->
+            <Grid
+                BindableLayout.ItemsSource="{Binding ModelFAB}"
+                BindableLayout.ItemTemplate="{StaticResource FAB}">
             </Grid>
         </Grid>
     </ContentPage.Content>
