@@ -4,248 +4,208 @@
              xmlns:helpers="clr-namespace:MuseoOmeroApp.Helpers"
              xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
              xmlns:effectsView="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:templates="clr-namespace:MuseoOmeroApp.Templates"
+             xmlns:viewmodel="clr-namespace:MuseoOmeroApp.ViewModel"
              x:Class="MuseoOmeroApp.Pages.Home"
              Title="Home"
              BackgroundColor="#48FFF384">
 
-    <Grid>
-        <!-- Top Bar -->
-        <Grid RowDefinitions="54,auto,*"
-              ZIndex="1">
+    <ContentPage.BindingContext>
+        <viewmodel:HomeModelView/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <Grid>
+            <!-- Top Bar -->
+            <Grid RowDefinitions="54,auto,*"
+                      ZIndex="1">
 
-            <Grid ColumnDefinitions="60,*,60"
-                  Padding="20,12,20,0"
-                  ColumnSpacing="16"
-                BackgroundColor="{StaticResource Tertiary}">
+                <Grid ColumnDefinitions="60,*,60"
+                          Padding="20,12,20,0"
+                          ColumnSpacing="16"
+                        BackgroundColor="{StaticResource Tertiary}">
 
-                <!-- Title & sub-Title -->
-                <Grid Grid.Column="1"
-                    RowDefinitions="*,*">
-                    <Label
-                        TextColor="Black"
-                        FontSize="19"
-                        HorizontalTextAlignment="Center"
-                        FontFamily="Lato"
-                        Text="MuseoOmero"></Label>
-                    <Label
-                        Grid.Row="1"
-                        TextColor="Black"
-                        FontSize="18"
-                        HorizontalTextAlignment="Center"
-                        FontFamily="LatoLightItalic"
-                        Text="Anagrafica"></Label>
+                    <!-- Title & sub-Title -->
+                    <Grid Grid.Column="1"
+                            RowDefinitions="*,*">
+                        <Label
+                                TextColor="Black"
+                                FontSize="19"
+                                HorizontalTextAlignment="Center"
+                                FontFamily="Lato"
+                                Text="MuseoOmero"></Label>
+                        <Label
+                                Grid.Row="1"
+                                TextColor="Black"
+                                FontSize="18"
+                                HorizontalTextAlignment="Center"
+                                FontFamily="LatoLightItalic"
+                                Text="Anagrafica"></Label>
+                    </Grid>
+
+                    <Frame
+                            Grid.Column="2"
+                            Padding="0"
+                            Margin="0"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            CornerRadius="999">
+                        <effectsView:SfEffectsView
+                            TouchDownEffects="Ripple"
+                                FadeOutRipple="True"
+                                RippleBackground="{StaticResource Primary}">
+                            <Label 
+                                FontFamily="MaterialDesignIcons" 
+                                Text="{x:Static helpers:IconFont.LogoutVariant}"
+                                TextColor="{StaticResource Primary}"
+                                FontSize="26"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center">
+                            </Label>
+                        </effectsView:SfEffectsView>
+                    </Frame>
+                </Grid>
+                <Image Grid.Row="1" 
+                        Source="top_bar" 
+                        HorizontalOptions="Fill"/>
+            </Grid>
+
+
+
+
+
+            <!-- Top & Bottom Waves and screen content-->
+            <Grid RowDefinitions="64,auto,*,auto,14">
+                <Image Grid.Row="0" 
+                    Source="block.png" 
+                           ScaleX="100"
+                           ScaleY="1.05"
+                    HorizontalOptions="Fill"/>
+                <Image Grid.Row="1" 
+                           ScaleX="1.02"
+                        Source="wave2" 
+                        HorizontalOptions="Fill"/>
+
+                <!-- Screen content-->
+                <Grid RowDefinitions="120,*"
+                            Grid.Row="2"
+                            RowSpacing="30">
+
+                    <!-- Center Big Icon -->
+                    <Frame
+                            Grid.Row="0"
+                            BorderColor="Transparent"
+                            BackgroundColor="{StaticResource Primary}"
+                            CornerRadius="999"
+                            WidthRequest="120"
+                            HeightRequest="120">
+                        <Label 
+                                FontFamily="MaterialDesignIcons" 
+                                Text="{x:Static helpers:IconFont.BagPersonal}"
+                                TextColor="{StaticResource White}"
+                                FontSize="64"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center">
+                        </Label>
+                    </Frame>
+
+                    <ScrollView
+                            Grid.Row="1"
+                            Margin="30,0,30,0">
+                        <VerticalStackLayout>
+                            <Frame
+                                    BorderColor="Transparent"
+                                    BackgroundColor="#92FFFFFF"
+                                    CornerRadius="60">
+                                <VerticalStackLayout
+                                        Spacing="10">
+                                
+                                    <StackLayout
+                                        Orientation="Vertical"
+                                        Spacing="10"
+                                        BindableLayout.ItemsSource="{Binding ModelEntries}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <templates:RoundedEntry/>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+
+                                    <!-- Separator -->
+                                    <Grid
+                                            Margin="0,10,0,10"
+                                            ColumnDefinitions="*,3*,*">
+                                        <BoxView 
+                                            Grid.Column="1"
+                                            Color="Gray"
+                                             HeightRequest="1.2"
+                                             HorizontalOptions="Fill" />
+                                    </Grid>
+
+                                    <!-- BirthDateEntry -->
+                                    <Grid ColumnDefinitions="16,auto,*">
+                                        <Border 
+                                                Grid.Column="0"
+                                                Grid.ColumnSpan="3"
+                                                Padding="0,1,0,1"
+                                                x:Name="BirthDateBorder"
+                                                StrokeThickness="1"
+                                                StrokeShape="RoundRectangle 999">
+                                            <DatePicker
+                                                    TextColor="Black"
+                                                    HorizontalOptions="Center"
+                                                    FontFamily="LatoLight"
+                                                    FontSize="19"
+                                                    Format="dd MMM">
+                                            </DatePicker>
+
+                                        </Border>
+                                        <Label 
+                                                Grid.Column="1"
+                                                FontFamily="MaterialDesignIcons" 
+                                                Text="{x:Static helpers:IconFont.CakeVariant}"
+                                                TextColor="#c8c8c8"
+                                                    FontSize="32"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Center">
+                                        </Label>
+                                    </Grid>
+
+                                </VerticalStackLayout>
+                            </Frame>
+                        </VerticalStackLayout>
+
+                    </ScrollView>
+
                 </Grid>
 
-                <Frame
-                    Grid.Column="2"
-                    Padding="0"
-                    Margin="0"
-                    BackgroundColor="Transparent"
-                    BorderColor="Transparent"
-                    CornerRadius="999">
-                    <effectsView:SfEffectsView
-                    TouchDownEffects="Ripple"
-                        FadeOutRipple="True"
-                        RippleBackground="{StaticResource Primary}">
-                        <Label 
-                        FontFamily="MaterialDesignIcons" 
-                        Text="{x:Static helpers:IconFont.LogoutVariant}"
-                        TextColor="{StaticResource Primary}"
-                        FontSize="26"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center">
-                        </Label>
-                    </effectsView:SfEffectsView>
-                </Frame>
-            </Grid>
-            <Image Grid.Row="1" 
-                Source="top_bar" 
-                HorizontalOptions="Fill"/>
-        </Grid>
-
-
-        
-        
-
-        <!-- Top & Bottom Waves and screen content-->
-        <Grid RowDefinitions="64,auto,*,auto,14">
-            <Image Grid.Row="0" 
-            Source="block.png" 
-                   ScaleX="100"
-                   ScaleY="1.05"
-            HorizontalOptions="Fill"/>
-            <Image Grid.Row="1" 
-                   ScaleX="1.02"
-                Source="wave2" 
-                HorizontalOptions="Fill"/>
-
-            <!-- Screen content-->
-            <Grid RowDefinitions="120,*"
-                    Grid.Row="2"
-                    RowSpacing="30">
-                
-                <!-- Center Big Icon -->
-                <Frame
-                    Grid.Row="0"
-                    BorderColor="Transparent"
-                    BackgroundColor="{StaticResource Primary}"
-                    CornerRadius="999"
-                    WidthRequest="120"
-                    HeightRequest="120">
-                    <Label 
-                        FontFamily="MaterialDesignIcons" 
-                        Text="{x:Static helpers:IconFont.BagPersonal}"
-                        TextColor="{StaticResource White}"
-                        FontSize="64"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center">
-                    </Label>
-                </Frame>
-
-                <ScrollView
-                    Grid.Row="1"
-                    Margin="30,0,30,0">
-                    <VerticalStackLayout>
-                        <Frame
-                            BorderColor="Transparent"
-                            BackgroundColor="#92FFFFFF"
-                            CornerRadius="60">
-                            <VerticalStackLayout
-                                Spacing="10">
-                                
-                                <!-- NameEntry -->
-                                <Grid ColumnDefinitions="16,auto,*">
-                                    <Border 
-                                        Grid.Column="0"
-                                        Grid.ColumnSpan="3"
-                                        Padding="0,1,0,1"
-                                        x:Name="NomeBorder"
-                                        StrokeThickness="1"
-                                        StrokeShape="RoundRectangle 999">
-                                        <Entry 
-                                            FontFamily="LatoLight"
-                                            FontSize="19"
-                                            HorizontalTextAlignment="Center"
-                                            Placeholder="Nome"
-                                            TextColor="Black"
-                                            Text="Mario">
-                                        </Entry>
-                                    </Border>
-                                    <Label 
-                                        Grid.Column="1"
-                                        FontFamily="MaterialDesignIcons" 
-                                        Text="{x:Static helpers:IconFont.Pen}"
-                                        TextColor="#c8c8c8"
-                                        FontSize="32"
-                                        VerticalOptions="Center"
-                                        HorizontalOptions="Center">
-                                    </Label>
-                                </Grid>
-
-                                <!-- SurnameEntry -->
-                                <Grid ColumnDefinitions="16,auto,*">
-                                    <Border 
-                                        Grid.Column="0"
-                                        Grid.ColumnSpan="3"
-                                        Padding="0,1,0,1"
-                                        x:Name="NomeBorder"
-                                        StrokeThickness="1"
-                                        StrokeShape="RoundRectangle 999">
-                                        <Entry 
-                                            FontFamily="LatoLight"
-                                            FontSize="19"
-                                            HorizontalTextAlignment="Center"
-                                            Placeholder="Cognome"
-                                            TextColor="Black"
-                                            Text="Rossi">
-                                        </Entry>
-                                    </Border>
-                                    <Label 
-                                        Grid.Column="1"
-                                        FontFamily="MaterialDesignIcons" 
-                                        Text="{x:Static helpers:IconFont.Pencil}"
-                                        TextColor="#c8c8c8"
-                                        FontSize="32"
-                                        VerticalOptions="Center"
-                                        HorizontalOptions="Center">
-                                    </Label>
-                                </Grid>
-
-                                <!-- Separator -->
-                                <Grid
-                                    Margin="0,10,0,10"
-                                    ColumnDefinitions="*,3*,*">
-                                <BoxView 
-                                    Grid.Column="1"
-                                    Color="Gray"
-                                     HeightRequest="1.2"
-                                     HorizontalOptions="Fill" />
-                                </Grid>
-
-                                <!-- BirthDateEntry -->
-                                <Grid ColumnDefinitions="16,auto,*">
-                                    <Border 
-                                        Grid.Column="0"
-                                        Grid.ColumnSpan="3"
-                                        Padding="0,1,0,1"
-                                        x:Name="NomeBorder"
-                                        StrokeThickness="1"
-                                        StrokeShape="RoundRectangle 999">
-                                        <DatePicker
-                                            TextColor="Black"
-                                            HorizontalOptions="Center"
-                                            FontFamily="LatoLight"
-                                            FontSize="19"
-                                            Format="dd MMM">
-                                        </DatePicker>
-
-                                    </Border>
-                                    <Label 
-                                        Grid.Column="1"
-                                        FontFamily="MaterialDesignIcons" 
-                                        Text="{x:Static helpers:IconFont.CakeVariant}"
-                                        TextColor="#c8c8c8"
-                                        FontSize="32"
-                                        VerticalOptions="Center"
-                                        HorizontalOptions="Center">
-                                    </Label>
-                                </Grid>
-
-                            </VerticalStackLayout>
-                        </Frame>
-                    </VerticalStackLayout>
-
-                </ScrollView>
-                
+                <Image Grid.Row="3" 
+                           ScaleX="1.02"
+                        Source="wave" 
+                        HorizontalOptions="Fill"/>
+                <Image Grid.Row="4" 
+                    Source="block.png" 
+                           ScaleX="100"
+                           ScaleY="1.05"
+                    HorizontalOptions="Fill"/>
             </Grid>
 
-            <Image Grid.Row="3" 
-                   ScaleX="1.02"
-                Source="wave" 
-                HorizontalOptions="Fill"/>
-            <Image Grid.Row="4" 
-            Source="block.png" 
-                   ScaleX="100"
-                   ScaleY="1.05"
-            HorizontalOptions="Fill"/>
-        </Grid>
+            <!-- Startup Animation -->
+            <skia:SKLottieView
+                          Source="air_ticket.json"
+                          RepeatCount="0"
+                          HeightRequest="200"
+                          WidthRequest="200"
+                          RepeatMode="Reverse"
+                          HorizontalOptions="Center" />
 
-        <!-- Startup Animation -->
-        <skia:SKLottieView
-                  Source="air_ticket.json"
-                  RepeatCount="0"
-                  HeightRequest="200"
-                  WidthRequest="200"
-                  RepeatMode="Reverse"
-                   PropertyChanging="SKLottieView_PropertyChanging"
-                  HorizontalOptions="Center" />
-
-        <!-- Bottom bar rounded corder-->
-        <Grid RowDefinitions="*,auto">
-            <Image Grid.Row="1" 
-                Source="bottom_bar" 
-                HorizontalOptions="Fill"/>
+            <!-- Bottom bar rounded corder-->
+            <Grid RowDefinitions="*,auto">
+                <Image Grid.Row="1" 
+                        Source="bottom_bar" 
+                        HorizontalOptions="Fill"/>
+            </Grid>
         </Grid>
-    </Grid>
-    
+    </ContentPage.Content>
+
 </ContentPage>

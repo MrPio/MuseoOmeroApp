@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:viewmodel="clr-namespace:MuseoOmeroApp.ViewModel"
+             x:Class="MuseoOmeroApp.Templates.RoundedEntry">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="EntryBorderStyle" TargetType="Border">
+                <Setter Property="Padding" Value="0,1,0,1"></Setter>
+                <Setter Property="StrokeThickness" Value="1"></Setter>
+                <Setter Property="StrokeShape" Value="RoundRectangle 999"></Setter>
+            </Style>
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="FontFamily" Value="LatoLight"></Setter>
+                <Setter Property="FontSize" Value="19"></Setter>
+                <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+                <Setter Property="TextColor" Value="Black"></Setter>
+            </Style>
+            <Style x:Key="IconStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="MaterialDesignIcons"></Setter>
+                <Setter Property="FontSize" Value="32"></Setter>
+                <Setter Property="TextColor" Value="#c8c8c8"></Setter>
+                <Setter Property="VerticalOptions" Value="Center"></Setter>
+                <Setter Property="HorizontalOptions" Value="Center"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <Grid ColumnDefinitions="16,auto,*">
+            <Border 
+                    x:Name="Border"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Style="{StaticResource EntryBorderStyle}">
+                <Entry 
+                        Placeholder="{Binding Placeholder}"
+                        Text="{Binding Text,Mode=TwoWay}"
+                        Style="{StaticResource EntryStyle}"
+                    Focused="Entry_Focused"
+                    Unfocused="Entry_Unfocused"
+                    TextChanged="Entry_TextChanged">
+                </Entry>
+            </Border>
+            <Label 
+                x:Name="Icon"
+                    Grid.Column="1"
+                    Text="{Binding Icon}"
+                    Style="{StaticResource IconStyle}">
+            </Label>
+        </Grid>
+        </ContentView.Content>
+</ContentView>
