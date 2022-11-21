@@ -4,8 +4,9 @@
              xmlns:helpers="clr-namespace:MuseoOmeroApp.Helpers"
              xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
              xmlns:effectsView="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-             xmlns:templates="clr-namespace:MuseoOmeroApp.Templates"
+             xmlns:templates="clr-namespace:MuseoOmeroApp.View.Templates"
              xmlns:viewmodel="clr-namespace:MuseoOmeroApp.ViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MuseoOmeroApp.Pages.Home"
              Title="Home"
              BackgroundColor="#48FFF384">
@@ -16,16 +17,18 @@
 
     <ContentPage.Content>
         <Grid>
-            <!-- Top Bar -->
+            <templates:TopBar 
+                BindingContext="{Binding TopBar}">
+            </templates:TopBar>
+            
+            <!-- Top Bar 
             <Grid RowDefinitions="54,auto,*"
                       ZIndex="1">
-
                 <Grid ColumnDefinitions="60,*,60"
                           Padding="20,12,20,0"
                           ColumnSpacing="16"
                         BackgroundColor="{StaticResource Tertiary}">
 
-                    <!-- Title & sub-Title -->
                     <Grid Grid.Column="1"
                             RowDefinitions="*,*">
                         <Label
@@ -61,6 +64,11 @@
                                 FontSize="26"
                                 VerticalOptions="Center"
                                 HorizontalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Tapped="TapGestureRecognizer_Tapped">
+                                    </TapGestureRecognizer>
+                                </Label.GestureRecognizers>
                             </Label>
                         </effectsView:SfEffectsView>
                     </Frame>
@@ -69,10 +77,10 @@
                         Source="top_bar" 
                        ScaleX="1.02"
                         HorizontalOptions="Fill"/>
-            </Grid>
+        </Grid> -->
 
 
-            <!-- Screen content-->
+        <!-- Screen content-->
             <Grid RowDefinitions="64,*,28">
                     <ScrollView
                         Grid.Row="1"
@@ -108,80 +116,136 @@
                                 <VerticalStackLayout 
                                     Spacing="10">
 
-                                    <StackLayout
-                                        Orientation="Vertical"
-                                        Spacing="10"
-                                        BindableLayout.ItemsSource="{Binding ModelEntries}">
-                                        <BindableLayout.ItemTemplate>
-                                            <DataTemplate>
-                                                <templates:RoundedEntry/>
-                                            </DataTemplate>
-                                        </BindableLayout.ItemTemplate>
-                                    </StackLayout>
-
-                                    <StackLayout
-                                        Orientation="Vertical"
-                                        Spacing="10"
-                                        BindableLayout.ItemsSource="{Binding ModelButton}">
-                                        <BindableLayout.ItemTemplate >
-                                            <DataTemplate >
-                                                <templates:RoundedButton/>
-                                            </DataTemplate>
-                                        </BindableLayout.ItemTemplate>
-                                    </StackLayout>
-                                    <StackLayout
-                                        Orientation="Vertical"
-                                        Spacing="10"
-                                        BindableLayout.ItemsSource="{Binding ModelButton}">
-                                        <BindableLayout.ItemTemplate >
-                                            <DataTemplate >
-                                                <templates:RoundedButton/>
-                                            </DataTemplate>
-                                        </BindableLayout.ItemTemplate>
-                                    </StackLayout>
+                                <!-- AnagraficaEntries -->
+                                <StackLayout
+                                    Orientation="Vertical"
+                                    Spacing="10"
+                                    BindableLayout.ItemsSource="{Binding AnagraficaEntries}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <templates:RoundedEntry/>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
 
 
-                                    <!-- Separator -->
-                                    <Grid
-                                            Margin="0,10,0,10"
-                                            ColumnDefinitions="*,3*,*">
-                                        <BoxView 
+                                <!-- Separator -->
+                                <Grid
+                                        Margin="0,10,0,10"
+                                        ColumnDefinitions="*,3*,*">
+                                    <BoxView 
+                                        Grid.Column="1"
+                                        Color="Gray"
+                                            HeightRequest="1.2"
+                                            HorizontalOptions="Fill" />
+                                </Grid>
+
+                                <!-- BirthDateEntry -->
+                                <Grid ColumnDefinitions="16,auto,*">
+                                    <Border 
+                                            x:Name="BirthDateBorder"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="3"
+                                            Padding="0,1,0,1"
+                                            StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 999">
+                                        <DatePicker
+                                                TextColor="Black"
+                                                HorizontalOptions="Center"
+                                            Focused="DatePicker_Focused"
+                                            Unfocused="DatePicker_Unfocused"
+                                                FontFamily="LatoLight"
+                                                FontSize="19"
+                                                Format="dd MMM">
+                                        </DatePicker>
+
+                                    </Border>
+                                    <Label 
+                                        x:Name="BirthDateIcon"
                                             Grid.Column="1"
-                                            Color="Gray"
-                                             HeightRequest="1.2"
-                                             HorizontalOptions="Fill" />
-                                    </Grid>
+                                            FontFamily="MaterialDesignIcons" 
+                                            Text="{x:Static helpers:IconFont.CakeVariant}"
+                                            TextColor="#c8c8c8"
+                                                FontSize="32"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center">
+                                    </Label>
+                                </Grid>
 
-                                    <!-- BirthDateEntry -->
-                                    <Grid ColumnDefinitions="16,auto,*">
-                                        <Border 
-                                                Grid.Column="0"
-                                                Grid.ColumnSpan="3"
-                                                Padding="0,1,0,1"
-                                                x:Name="BirthDateBorder"
-                                                StrokeThickness="1"
-                                                StrokeShape="RoundRectangle 999">
-                                            <DatePicker
-                                                    TextColor="Black"
-                                                    HorizontalOptions="Center"
-                                                    FontFamily="LatoLight"
-                                                    FontSize="19"
-                                                    Format="dd MMM">
-                                            </DatePicker>
+                                   <!-- SessoEntry -->
+                                <Grid ColumnDefinitions="16,auto,*">
+                                    <Border 
+                                            x:Name="SessoBorder"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="3"
+                                            Padding="0,1,0,1"
+                                            StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 999">
+                                        <Picker
+                                            x:Name="SessoPicker"
+                                            ItemsSource="{Binding Sesso}"
+                                            SelectedItem="{Binding SessoItem}"
+                                            Focused="SessoPicker_Focused"
+                                            Unfocused="SessoPicker_Unfocused"
+                                                TextColor="Black"
+                                                HorizontalOptions="Center"
+                                                FontFamily="LatoLight"
+                                                FontSize="19">
+                                        </Picker>
 
-                                        </Border>
-                                        <Label 
-                                                Grid.Column="1"
-                                                FontFamily="MaterialDesignIcons" 
-                                                Text="{x:Static helpers:IconFont.CakeVariant}"
-                                                TextColor="#c8c8c8"
-                                                    FontSize="32"
-                                                VerticalOptions="Center"
-                                                HorizontalOptions="Center">
-                                        </Label>
-                                    </Grid>
+                                    </Border>
+                                    <Label 
+                                            x:Name="SessoIcon"
+                                            Grid.Column="1"
+                                            FontFamily="MaterialDesignIcons" 
+                                            Text="{Binding SessoIcon}"
+                                            TextColor="#c8c8c8"
+                                                FontSize="32"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center">
+                                    </Label>
+                                </Grid>
 
-                                </VerticalStackLayout>
+
+
+                                <!-- ProvenienzaEntry -->
+                                <Grid ColumnDefinitions="16,auto,*">
+                                    <Border 
+                                            x:Name="ProvenienzaBorder"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="3"
+                                            Padding="0,1,0,1"
+                                            StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 999">
+                                        <Entry
+                                            x:Name="ProvenienzaEntry"
+                                            Focused="ProvenienzaEntry_Focused"
+                                            Unfocused="ProvenienzaEntry_Unfocused"
+                                            Text="AA"
+                                            TextColor="Black"
+                                            HorizontalTextAlignment="Center"
+                                            HorizontalOptions="Fill"
+                                            FontFamily="LatoLight"
+                                            FontSize="19">
+                                            <Entry.Behaviors>
+                                                <toolkit:MaskedBehavior Mask="XXX"/>
+                                            </Entry.Behaviors>
+                                        </Entry>
+
+                                    </Border>
+                                    <Label 
+                                            x:Name="ProvenienzaIcon"
+                                            Grid.Column="1"
+                                            FontFamily="MaterialDesignIcons" 
+                                            Text="{x:Static helpers:IconFont.Flag}"
+                                            TextColor="#c8c8c8"
+                                                FontSize="32"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center">
+                                    </Label>
+                                </Grid>
+
+                            </VerticalStackLayout>
                             </Frame>
                         </VerticalStackLayout>
                     </ScrollView>
@@ -211,14 +275,14 @@
             </Grid>
 
 
-            <!-- Startup Animation -->
+            <!-- Startup Animation 
             <skia:SKLottieView
                           Source="air_ticket.json"
                           RepeatCount="0"
                           HeightRequest="200"
                           WidthRequest="200"
                           RepeatMode="Reverse"
-                          HorizontalOptions="Center" />
+                          HorizontalOptions="Center" /> -->
 
             <!-- Bottom bar rounded corder-->
             <Grid RowDefinitions="*,auto">

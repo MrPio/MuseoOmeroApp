@@ -1,6 +1,6 @@
 using MuseoOmeroApp.ViewModel;
 
-namespace MuseoOmeroApp.Templates;
+namespace MuseoOmeroApp.View.Templates;
 
 public partial class RoundedEntry : ContentView
 {
@@ -27,10 +27,5 @@ public partial class RoundedEntry : ContentView
         Border.Stroke = Color.FromHex("#c8c8c8");
         Border.StrokeThickness = 1;
         Border.BackgroundColor = Colors.White;
-    }
-
-    private void Entry_TextChanged(object sender, TextChangedEventArgs e)
-    {
-        HomeModelView.OnTextChanged(sender, e);
     }
 }

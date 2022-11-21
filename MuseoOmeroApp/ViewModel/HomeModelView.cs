@@ -10,46 +10,56 @@ namespace MuseoOmeroApp.ViewModel
 {
     public class HomeModelView : BindableObject
     {
-        ObservableCollection<ModelEntry> _modelEntries = new()
+        ObservableCollection<ModelEntry> _anagraficaEntries = new()
         {
-            new ModelEntry("prova1","testo2",IconFont.Abacus),
-            new ModelEntry("prova2","testo3",IconFont.AbjadHebrew)
+            new ModelEntry("Nome","Mario",IconFont.Pen),
+            new ModelEntry("Cognome","Rossi",IconFont.Pencil),
         };
 
-        ObservableCollection<RoundedButtonViewModel> _modelButton = new()
+        private string _sessoIcon = IconFont.GenderMale;
+        public string SessoIcon
         {
-            new("LOG",() => {
-                return true;
-            }),
+            get { return _sessoIcon; }
+            set { _sessoIcon = value; OnPropertyChanged(nameof(SessoIcon)); }
+        }
+
+        private string _sessoItem = "Maschio";
+        public string SessoItem
+        {
+            get { return _sessoItem; }
+            set { 
+                _sessoItem = value;
+                SessoIcon = value switch
+                {
+                    "Maschio" => IconFont.GenderMale,
+                    "Femmina" => IconFont.GenderFemale,
+                    _ => IconFont.GenderMaleFemale,
+                };
+                OnPropertyChanged(nameof(SessoItem));
+            }
+        }
+
+        public ObservableCollection<ModelEntry> AnagraficaEntries
+        {
+            get { return _anagraficaEntries; }
+            set { _anagraficaEntries = value; OnPropertyChanged(); }
+        }
+
+        public ObservableCollection<string> Sesso { get; set; } = new()
+        {
+            "Maschio","Femmina","NonSpecificato"
         };
-
-
-
-
-        public ObservableCollection<ModelEntry> ModelEntries
-        {
-            get { return _modelEntries; }
-            set { _modelEntries = value; OnPropertyChanged(); }
-        }
-        public ObservableCollection<RoundedButtonViewModel> ModelButton
-        {
-            get { return _modelButton; }
-            set { _modelButton = value; OnPropertyChanged(); }
-        }
-
-        public static void OnTextChanged(object sender, TextChangedEventArgs e)
-        {
-            int i = 0;
-        }
 
         public ObservableCollection<FABViewModel> ModelFAB { get; set; } = new()
         {
-            new(IconFont.Star, new Command<FABViewModel>((obj) =>
+            new(IconFont.ContentSave, new Command<FABViewModel>((obj) =>
              {
-                 int i=0;
+                 //save
                 return;
             })),
         };
+
+        public TopBarViewModel TopBar { get; set; } = new("Anagrafica");
 
     }
 }

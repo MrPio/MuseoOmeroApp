@@ -1,7 +1,5 @@
 using MuseoOmeroApp.View;
-using MuseoOmeroApp.ViewModel;
-using SkiaSharp.Extended.UI.Controls;
-using System.Diagnostics;
+
 namespace MuseoOmeroApp.Pages;
 
 public partial class Home : ContentPage
@@ -62,4 +60,71 @@ public partial class Home : ContentPage
         };
         BlockTop.ScaleY = 1.35;
     }
+
+
+
+    private void DatePicker_Focused(object sender, FocusEventArgs e)
+    {
+        ((DatePicker)sender).TextColor = Color.FromHex("#1e1e1e");
+        BirthDateIcon.TextColor = (Color)MyColors["Primary"];
+        BirthDateBorder.Stroke = (Color)MyColors["Primary"];
+        BirthDateBorder.StrokeThickness = 2.6;
+        BirthDateBorder.BackgroundColor = Colors.White;
+    }
+
+    private void DatePicker_Unfocused(object sender, FocusEventArgs e)
+    {
+        ((DatePicker)sender).TextColor = Color.FromHex("#686868");
+        BirthDateIcon.TextColor = Color.FromHex("#c8c8c8");
+        BirthDateBorder.Stroke = Color.FromHex("#c8c8c8");
+        BirthDateBorder.StrokeThickness = 1;
+        BirthDateBorder.BackgroundColor = Colors.White;
+    }
+
+    private void SessoPicker_Focused(object sender, FocusEventArgs e)
+    {
+        ((Picker)sender).TextColor = Color.FromHex("#1e1e1e");
+        SessoIcon.TextColor = (Color)MyColors["Primary"];
+        SessoBorder.Stroke = (Color)MyColors["Primary"];
+        SessoBorder.StrokeThickness = 2.6;
+        SessoBorder.BackgroundColor = Colors.White;
+    }
+
+    private void SessoPicker_Unfocused(object sender, FocusEventArgs e)
+    {
+        ((Picker)sender).TextColor = Color.FromHex("#686868");
+        SessoIcon.TextColor = Color.FromHex("#c8c8c8");
+        SessoBorder.Stroke = Color.FromHex("#c8c8c8");
+        SessoBorder.StrokeThickness = 1;
+        SessoBorder.BackgroundColor = Colors.White;
+    }
+
+    private void ProvenienzaEntry_Focused(object sender, FocusEventArgs e)
+    {
+        ((Entry)sender).TextColor = Color.FromHex("#1e1e1e");
+        ProvenienzaIcon.TextColor = (Color)MyColors["Primary"];
+        ProvenienzaBorder.Stroke = (Color)MyColors["Primary"];
+        ProvenienzaBorder.StrokeThickness = 2.6;
+        ProvenienzaBorder.BackgroundColor = Colors.White;
+    }
+
+    private void ProvenienzaEntry_Unfocused(object sender, FocusEventArgs e)
+    {
+        ((Entry)sender).TextColor = Color.FromHex("#686868");
+        ProvenienzaIcon.TextColor = Color.FromHex("#c8c8c8");
+        ProvenienzaBorder.Stroke = Color.FromHex("#c8c8c8");
+        ProvenienzaBorder.StrokeThickness = 1;
+        ProvenienzaBorder.BackgroundColor = Colors.White;
+    }
+
+    private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+    {
+        if (await DisplayAlert("Vuoi davvero uscire?", "Dovrai eseguire  di nuovo il login per rientrare.", "Yes", "No"))
+        {
+            Preferences.Clear("username");
+            Preferences.Clear("access_token");
+            Application.Current.MainPage = new RegisterPage();
+        }
+    }
+
 }

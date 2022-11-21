@@ -17,7 +17,7 @@
                     FontSize="48"
                     FontFamily="MaterialDesignIcons" 
                     Text="{Binding TextIcon}"
-                    TextColor="{StaticResource Tertiary}"
+                    TextColor="White"
                     BackgroundColor="{StaticResource Primary}"
                     Pressed="Button_Pressed"
                     Released="Button_Released"

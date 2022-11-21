@@ -8,6 +8,8 @@ namespace MuseoOmeroApp.Pages;
 
 public partial class LoginPage : ContentPage
 {
+    ResourceDictionary MyColors = Application.Current.Resources.MergedDictionaries.First();
+
     static ApiService api=new ();
     bool loginInProgress = false;
 
@@ -19,22 +21,20 @@ public partial class LoginPage : ContentPage
 
     private async void LoginButton_Clicked(object sender, EventArgs e)
     {
-        Application.Current.MainPage = new TabbedHome();
-        return;
         if (loginInProgress)
         {
             return;
         }
         loginInProgress = true;
         var campiCompilati = true;
-        if (UsernameEntry.Text is "" or null)
+        if (string.IsNullOrEmpty(UsernameEntry.Text))
         {
-            UsernameBorder.BackgroundColor = Color.FromHex("#09713c");
+            UsernameBorder.BackgroundColor = (Color)MyColors["Primary"];
             campiCompilati=false;
         }
-        if (PasswordEntry.Text is "" or null)
+        if (string.IsNullOrEmpty(PasswordEntry.Text))
         {
-            PasswordBorder.BackgroundColor = Color.FromHex("#09713c");
+            PasswordBorder.BackgroundColor = (Color)MyColors["Primary"];
             campiCompilati=false;
         }
 
@@ -44,6 +44,16 @@ public partial class LoginPage : ContentPage
             loginInProgress=false;
             return;
         }
+
+        //TODO API
+        var provv = new Token();
+        provv.Username = "MrPio";
+        provv.AccessToken = "AAAAABBBBB";
+        Preferences.Set("username", provv.Username);
+        Preferences.Set("access_token", provv.AccessToken);
+        Application.Current.MainPage = new TabbedHome();
+        return;
+
 
         Loading.IsVisible = true; 
         var response =await api.Login(UsernameEntry.Text, PasswordEntry.Text);

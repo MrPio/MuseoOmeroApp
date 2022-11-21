@@ -17,7 +17,7 @@ public partial class FAB : ResourceDictionary
         ((Button)sender).BackgroundColor = Colors.White;
         ((Button)sender).TextColor = (Color)MyColors["Primary"];
 
-        ((Button)sender).BorderWidth = 3;
+        ((Button)sender).BorderWidth = 4;
         ((Button)sender).BorderColor = (Color)MyColors["Primary"];
     }
 
@@ -25,6 +25,6 @@ public partial class FAB : ResourceDictionary
     {
         ((Button)sender).BackgroundColor = (Color)MyColors["Primary"];
         
-        ((Button)sender).TextColor = (Color)MyColors["Tertiary"];
+        ((Button)sender).TextColor = Colors.White;
     }
 }

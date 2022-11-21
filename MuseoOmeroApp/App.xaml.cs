@@ -27,6 +27,14 @@ public partial class App : Application
 #endif
         });
 
-        MainPage = new TabbedHome();
+        //TODO API
+        if (Preferences.ContainsKey("access_token"))
+        {
+            MainPage = new TabbedHome();
+        }
+        else
+        {
+            MainPage = new LoginPage();
+        }
 	}
 }

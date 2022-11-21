@@ -1,6 +1,6 @@
 using MuseoOmeroApp.ViewModel.Templates;
 
-namespace MuseoOmeroApp.Templates;
+namespace MuseoOmeroApp.View.Templates;
 
 public partial class RoundedButton : ContentView
 {
