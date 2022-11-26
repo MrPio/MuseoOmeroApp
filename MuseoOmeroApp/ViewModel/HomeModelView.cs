@@ -10,10 +10,10 @@ namespace MuseoOmeroApp.ViewModel
 {
     public class HomeModelView : BindableObject
     {
-        ObservableCollection<ModelEntry> _anagraficaEntries = new()
+        ObservableCollection<RoundedEntryViewModel> _anagraficaEntries = new()
         {
-            new ModelEntry("Nome","Mario",IconFont.Pen),
-            new ModelEntry("Cognome","Rossi",IconFont.Pencil),
+            new RoundedEntryViewModel("Nome","Mario",IconFont.Pen),
+            new RoundedEntryViewModel("Cognome","Rossi",IconFont.Pencil),
         };
 
         private string _sessoIcon = IconFont.GenderMale;
@@ -39,7 +39,7 @@ namespace MuseoOmeroApp.ViewModel
             }
         }
 
-        public ObservableCollection<ModelEntry> AnagraficaEntries
+        public ObservableCollection<RoundedEntryViewModel> AnagraficaEntries
         {
             get { return _anagraficaEntries; }
             set { _anagraficaEntries = value; OnPropertyChanged(); }
@@ -60,6 +60,14 @@ namespace MuseoOmeroApp.ViewModel
         };
 
         public TopBarViewModel TopBar { get; set; } = new("Anagrafica");
+
+        public BigRoundedIconViewModel BigRoundedIcon { get; set; } = new(IconFont.BagPersonal);
+
+
+        public double FontSize { get; set; } = DPI.ENTRY_FONT_SIZE;
+        public double IconSize { get; set; } = DPI.DENSITY_FACTOR * 32;
+
+
 
     }
 }

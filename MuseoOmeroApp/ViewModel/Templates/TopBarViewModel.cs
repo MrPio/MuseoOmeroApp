@@ -10,5 +10,6 @@ namespace MuseoOmeroApp.ViewModel.Templates
 
         public string Title { get; set; }
 
+
     }
 }

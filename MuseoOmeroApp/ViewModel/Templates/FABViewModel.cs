@@ -16,5 +16,8 @@ namespace MuseoOmeroApp.ViewModel.Templates
             TextIcon = textIcon;
             OnClick= onClick;
         }
+        public double Size { get; set; } = DPI.DENSITY_FACTOR * 80;
+        public double FontSize { get; set; } = DPI.DENSITY_FACTOR * 48;
+
     }
 }

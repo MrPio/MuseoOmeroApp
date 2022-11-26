@@ -17,70 +17,22 @@
 
     <ContentPage.Content>
         <Grid>
+            <VerticalStackLayout>
+                <Image
+                    Opacity="0.085"
+                    Source="background_image.png"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                </Image>
+            </VerticalStackLayout>
+            
             <templates:TopBar 
+                ZIndex="1"
                 BindingContext="{Binding TopBar}">
             </templates:TopBar>
             
-            <!-- Top Bar 
-            <Grid RowDefinitions="54,auto,*"
-                      ZIndex="1">
-                <Grid ColumnDefinitions="60,*,60"
-                          Padding="20,12,20,0"
-                          ColumnSpacing="16"
-                        BackgroundColor="{StaticResource Tertiary}">
 
-                    <Grid Grid.Column="1"
-                            RowDefinitions="*,*">
-                        <Label
-                                TextColor="Black"
-                                FontSize="19"
-                                HorizontalTextAlignment="Center"
-                                FontFamily="Lato"
-                                Text="MuseoOmero"></Label>
-                        <Label
-                                Grid.Row="1"
-                                TextColor="Black"
-                                FontSize="18"
-                                HorizontalTextAlignment="Center"
-                                FontFamily="LatoLightItalic"
-                                Text="Anagrafica"></Label>
-                    </Grid>
-
-                    <Frame
-                            Grid.Column="2"
-                            Padding="0"
-                            Margin="0"
-                            BackgroundColor="Transparent"
-                            BorderColor="Transparent"
-                            CornerRadius="999">
-                        <effectsView:SfEffectsView
-                            TouchDownEffects="Ripple"
-                                FadeOutRipple="True"
-                                RippleBackground="{StaticResource Primary}">
-                            <Label 
-                                FontFamily="MaterialDesignIcons" 
-                                Text="{x:Static helpers:IconFont.LogoutVariant}"
-                                TextColor="{StaticResource Primary}"
-                                FontSize="26"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                        Tapped="TapGestureRecognizer_Tapped">
-                                    </TapGestureRecognizer>
-                                </Label.GestureRecognizers>
-                            </Label>
-                        </effectsView:SfEffectsView>
-                    </Frame>
-                </Grid>
-                <Image Grid.Row="1" 
-                        Source="top_bar" 
-                       ScaleX="1.02"
-                        HorizontalOptions="Fill"/>
-        </Grid> -->
-
-
-        <!-- Screen content-->
+            <!-- Screen content-->
             <Grid RowDefinitions="64,*,28">
                     <ScrollView
                         Grid.Row="1"
@@ -89,25 +41,9 @@
                         <VerticalStackLayout
                             Spacing="20">
                             <!-- Center Big Icon -->
-                        <Frame
-                            x:Name="BigIconFrame"
-                                Grid.Row="0"
-                                Opacity="0"
-                                BorderColor="Transparent"
-                                BackgroundColor="{StaticResource Primary}"
-                                CornerRadius="999"
-                                WidthRequest="110"
-                                HeightRequest="110">
-                            <Label 
-                                x:Name="BigIcon"
-                                FontFamily="MaterialDesignIcons" 
-                                    Text="{x:Static helpers:IconFont.BagPersonal}"
-                                    TextColor="{StaticResource White}"
-                                    FontSize="60"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="Center">
-                            </Label>
-                        </Frame>
+                        <templates:BigRoundedIcon
+                            BindingContext="{Binding BigRoundedIcon}">
+                        </templates:BigRoundedIcon>
 
                         <Frame
                                 BorderColor="Transparent"
@@ -155,7 +91,7 @@
                                             Focused="DatePicker_Focused"
                                             Unfocused="DatePicker_Unfocused"
                                                 FontFamily="LatoLight"
-                                                FontSize="19"
+                                                FontSize="{Binding FontSize}"
                                                 Format="dd MMM">
                                         </DatePicker>
 
@@ -166,7 +102,7 @@
                                             FontFamily="MaterialDesignIcons" 
                                             Text="{x:Static helpers:IconFont.CakeVariant}"
                                             TextColor="#c8c8c8"
-                                                FontSize="32"
+                                                FontSize="{Binding IconSize}"
                                             VerticalOptions="Center"
                                             HorizontalOptions="Center">
                                     </Label>
@@ -190,7 +126,7 @@
                                                 TextColor="Black"
                                                 HorizontalOptions="Center"
                                                 FontFamily="LatoLight"
-                                                FontSize="19">
+                                                FontSize="{Binding FontSize}">
                                         </Picker>
 
                                     </Border>
@@ -200,7 +136,7 @@
                                             FontFamily="MaterialDesignIcons" 
                                             Text="{Binding SessoIcon}"
                                             TextColor="#c8c8c8"
-                                                FontSize="32"
+                                                FontSize="{Binding IconSize}"
                                             VerticalOptions="Center"
                                             HorizontalOptions="Center">
                                     </Label>
@@ -226,7 +162,7 @@
                                             HorizontalTextAlignment="Center"
                                             HorizontalOptions="Fill"
                                             FontFamily="LatoLight"
-                                            FontSize="19">
+                                            FontSize="{Binding FontSize}">
                                             <Entry.Behaviors>
                                                 <toolkit:MaskedBehavior Mask="XXX"/>
                                             </Entry.Behaviors>
@@ -239,7 +175,7 @@
                                             FontFamily="MaterialDesignIcons" 
                                             Text="{x:Static helpers:IconFont.Flag}"
                                             TextColor="#c8c8c8"
-                                                FontSize="32"
+                                                FontSize="{Binding IconSize}"
                                             VerticalOptions="Center"
                                             HorizontalOptions="Center">
                                     </Label>
@@ -252,27 +188,7 @@
             </Grid>
 
             <!-- Top & Bottom Waves-->
-            <Grid x:Name="WavesGrid" RowDefinitions="100,auto,*,auto,34">
-                <Image x:Name="BlockTop" Grid.Row="0" 
-                    Source="block.png" 
-                           ScaleX="100"
-                           ScaleY="1.35"
-                    HorizontalOptions="Fill"/>
-                <Image Grid.Row="1" 
-                           ScaleX="1.02"
-                        Source="wave2" 
-                        HorizontalOptions="Fill"/>
-
-                <Image Grid.Row="3" 
-                           ScaleX="1.02"
-                        Source="wave" 
-                        HorizontalOptions="Fill"/>
-                <Image Grid.Row="4"
-                    Source="block.png" 
-                           ScaleX="100"
-                           ScaleY="1.05"
-                    HorizontalOptions="Fill"/>
-            </Grid>
+            <templates:TopAndBottomWaves x:Name="TopAndBottomWaves"/>
 
 
             <!-- Startup Animation 
@@ -285,13 +201,8 @@
                           HorizontalOptions="Center" /> -->
 
             <!-- Bottom bar rounded corder-->
-            <Grid RowDefinitions="*,auto">
-                <Image Grid.Row="1" 
-                        Source="bottom_bar" 
-                       ScaleX="1.02"
-                        HorizontalOptions="Fill"/>
-            </Grid>
-            
+            <templates:BottomBarRoundedCorner/>
+
             <!-- FAB -->
             <Grid
                 BindableLayout.ItemsSource="{Binding ModelFAB}"

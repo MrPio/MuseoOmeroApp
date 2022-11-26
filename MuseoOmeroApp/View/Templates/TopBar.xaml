@@ -40,9 +40,11 @@
                 BorderColor="Transparent"
                 CornerRadius="999">
                     <effectsView:SfEffectsView
-                    TouchDownEffects="Ripple"
+                    LongPressEffects="Ripple"
+                        TouchDownEffects="Ripple"
                     FadeOutRipple="True"
-                    RippleBackground="{StaticResource Primary}">
+                    RippleBackground="{StaticResource Primary}"
+                        TouchUp="TapGestureRecognizer_Tapped">
                         <Label 
                         FontFamily="MaterialDesignIcons" 
                         Text="{x:Static helpers:IconFont.LogoutVariant}"
@@ -50,11 +52,6 @@
                         FontSize="26"
                         VerticalOptions="Center"
                         HorizontalOptions="Center">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer
-                                Tapped="TapGestureRecognizer_Tapped">
-                                </TapGestureRecognizer>
-                            </Label.GestureRecognizers>
                         </Label>
                     </effectsView:SfEffectsView>
                 </Frame>

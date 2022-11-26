@@ -1,4 +1,5 @@
 using MuseoOmeroApp.View;
+using MuseoOmeroApp.ViewModel;
 
 namespace MuseoOmeroApp.Pages;
 
@@ -31,10 +32,19 @@ public partial class Home : ContentPage
             return;
 
         var parentAnimation = new Animation();
-        parentAnimation.Add(0, 1, new Animation(v => BigIconFrame.Opacity = v, 0, 1, Easing.CubicIn));
-        parentAnimation.Add(0, 1, new Animation(v => WavesGrid.RowDefinitions[0] =new RowDefinition(v), 100, 64, Easing.CubicInOut));
-        parentAnimation.Add(0, 1, new Animation(v => WavesGrid.RowDefinitions[4] =        new RowDefinition(v), 34, 14, Easing.CubicInOut));
-        parentAnimation.Add(0, 1, new Animation(v => BlockTop.ScaleY =v, 1.35, 1.05, Easing.CubicInOut));
+
+        parentAnimation.Add(0, 1, new Animation(v => 
+        ((HomeModelView)BindingContext).BigRoundedIcon.Opacity = v, 0, 1, Easing.CubicIn));
+
+        
+        parentAnimation.Add(0, 1, new Animation(v =>
+        ((Grid)TopAndBottomWaves.FindByName("WavesGrid")).RowDefinitions[0] =new RowDefinition(v), 100, 64, Easing.CubicInOut));
+
+        parentAnimation.Add(0, 1, new Animation(v =>
+        ((Grid)TopAndBottomWaves.FindByName("WavesGrid")).RowDefinitions[4] = new RowDefinition(v), 34, 14, Easing.CubicInOut));
+
+        parentAnimation.Add(0, 1, new Animation(v =>
+        ((Image)TopAndBottomWaves.FindByName("BlockTop")).ScaleY =v, 1.35, 1.05, Easing.CubicInOut));
 
         parentAnimation.Commit(this, "TransitionAnimation", 16, 700, null, null);
 
@@ -49,16 +59,16 @@ public partial class Home : ContentPage
     protected override async void OnDisappearing()
     {
         base.OnDisappearing();
-        BigIconFrame.Opacity = 0;
-        WavesGrid.RowDefinitions = new RowDefinitionCollection()
-        {
-            new RowDefinition(100),
-            new RowDefinition(GridLength.Auto),
-            new RowDefinition(GridLength.Star),
-            new RowDefinition(GridLength.Auto),
-            new RowDefinition(34)
-        };
-        BlockTop.ScaleY = 1.35;
+        ((HomeModelView)BindingContext).BigRoundedIcon.Opacity = 0;
+        //WavesGrid.RowDefinitions = new RowDefinitionCollection()
+        //{
+        //    new RowDefinition(100),
+        //    new RowDefinition(GridLength.Auto),
+        //    new RowDefinition(GridLength.Star),
+        //    new RowDefinition(GridLength.Auto),
+        //    new RowDefinition(34)
+        //};
+        //BlockTop.ScaleY = 1.35;
     }
 
 

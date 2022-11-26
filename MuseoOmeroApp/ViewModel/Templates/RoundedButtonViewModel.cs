@@ -22,5 +22,10 @@
             get { return _onClick; }
             set { _onClick = value; OnPropertyChanged(); }
         }
+
+        public double FontSize { get; set; } = DPI.BUTTON_FONT_SIZE;
+        public double HeightRequest { get; set; } = DPI.DENSITY_FACTOR * 52;
+        public double CornerRadius { get; set; } = DPI.DENSITY_FACTOR * 26;
+
     }
 }

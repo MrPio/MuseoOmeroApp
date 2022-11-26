@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:MuseoOmeroApp.View.Templates"
+             xmlns:viewmodel="clr-namespace:MuseoOmeroApp.ViewModel"
+             x:Class="MuseoOmeroApp.Pages.Negozio"
+             Title="Negozio"
+             BackgroundColor="#48FFF384">
+    <ContentPage.BindingContext>
+        <viewmodel:NegozioViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <VerticalStackLayout>
+                <Image
+                    Opacity="0.085"
+                    Source="background_image.png"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                </Image>
+            </VerticalStackLayout>
+
+            <templates:TopBar 
+                ZIndex="1"
+                BindingContext="{Binding TopBar}">
+            </templates:TopBar>
+            
+
+            <!-- Screen content-->
+            <Grid RowDefinitions="64,*,28">
+                <ScrollView
+                        Grid.Row="1"
+                        Padding="0,50,0,0"
+                            Margin="12,0,12,0">
+                    <VerticalStackLayout
+                            Spacing="20">
+                        <!-- Center Big Icon -->
+                        <templates:BigRoundedIcon
+                            BindingContext="{Binding BigRoundedIcon}">
+                        </templates:BigRoundedIcon>
+
+                        <Frame
+                            BorderColor="Transparent"
+                            BackgroundColor="#92FFFFFF"
+                            CornerRadius="60">
+
+                            <StackLayout
+                                Orientation="Vertical"
+                                Spacing="10"
+                                BindableLayout.ItemsSource="{Binding NegozioItems}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <templates:NegozioItem/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Frame>
+                    </VerticalStackLayout>
+                </ScrollView>
+            </Grid>
+
+            <!-- Top & Bottom Waves-->
+            <templates:TopAndBottomWaves x:Name="TopAndBottomWaves"/>
+
+            <!-- Bottom bar rounded corder-->
+            <templates:BottomBarRoundedCorner/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

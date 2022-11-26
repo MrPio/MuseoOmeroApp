@@ -1,16 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
-namespace MuseoOmeroApp.Models
+namespace MuseoOmeroApp.ViewModel.Templates
 {
-    public class ModelEntry : ObservableObject
+    public class RoundedEntryViewModel : ObservableObject
     {
-        public ModelEntry(string placeholder, string text, string icon)
+        public RoundedEntryViewModel(string placeholder, string text, string icon)
         {
             Placeholder = placeholder;
             Text = text;
@@ -28,5 +22,9 @@ namespace MuseoOmeroApp.Models
             } 
         }
         public string Icon { get; set; }
+
+        public double FontSize { get; set; } = DPI.ENTRY_FONT_SIZE;
+        public double IconSize { get; set; } = DPI.DENSITY_FACTOR * 32;
+
     }
 }

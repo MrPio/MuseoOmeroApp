@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:effectsView="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:helpers="clr-namespace:MuseoOmeroApp.Helpers"             
+             x:Class="MuseoOmeroApp.View.Templates.NegozioItem">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="IconStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="MaterialDesignIcons"></Setter>
+                <Setter Property="FontSize" Value="Large"></Setter>
+                <Setter Property="TextColor" Value="{Binding TextColor}"></Setter>
+                <Setter Property="VerticalOptions" Value="Center"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+
+        <Frame
+            Grid.ColumnSpan="2"
+            Padding="0"
+            CornerRadius="999"
+            BorderColor="Transparent"
+            HeightRequest="120"
+            BackgroundColor="{Binding BackgroundColor}">
+            <effectsView:SfEffectsView
+            TouchDownEffects="Ripple"
+            FadeOutRipple="True"
+            RippleAnimationDuration="500"
+            RippleBackground="Black">
+            <Grid
+                RowDefinitions="*"
+                ColumnDefinitions="124,*">
+                    
+                    <Frame
+                    Grid.Column="0"
+                    CornerRadius="999"
+                    Padding="0"
+                    Margin="0"
+                    BorderColor="Transparent"
+                    HeightRequest="96"
+                    WidthRequest="96"
+                    BackgroundColor="{Binding BackgroundIconColor}">
+                    <effectsView:SfEffectsView
+                        TouchDownEffects="Ripple"
+                        FadeOutRipple="True"
+                        RippleAnimationDuration="200"
+                        RippleBackground="Black">
+                        <Label 
+                            FontFamily="MaterialDesignIcons"
+                            Text="{Binding IconText}"
+                            TextColor="{Binding BackgroundColor}"
+                            FontSize="{Binding IconSize}"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center">
+                        </Label>
+                    </effectsView:SfEffectsView>
+                </Frame>
+                <Grid
+                    Grid.Column="1"
+                    RowDefinitions="2*,auto,auto,0.5*,auto,*"
+                    ColumnDefinitions="auto,auto,auto,*,60,30">
+                    <Label
+                        Grid.Row="1"
+                        Grid.ColumnSpan="99"
+                        Text="{Binding Title}"
+                        TextColor="{Binding TextColor}"
+                        FontFamily="Lato"
+                        FontSize="Large">
+                    </Label>
+                    <Label
+                        Grid.Row="2"
+                        Grid.ColumnSpan="99"
+                        Text="{Binding Subtitle}"
+                        LineBreakMode="TailTruncation"
+                        MaxLines="2"
+                        TextColor="{Binding TextColor}"
+                        FontSize="Medium">
+                    </Label>
+
+                    <Grid
+                        Grid.Row="4"
+                        Grid.Column="0">
+                        <Label
+                            Text="{x:Static helpers:IconFont.CurrencyEurOff}"
+                            IsVisible="{Binding MoneyIcon0Visible}"
+                            Style="{StaticResource IconStyle}">
+                        </Label>
+                        <Label
+                            Text="{x:Static helpers:IconFont.CurrencyEur}"
+                            IsVisible="{Binding MoneyIcon1Visible}"
+                            Style="{StaticResource IconStyle}">
+                        </Label>
+                    </Grid>
+
+                    <Label
+                        Grid.Row="4"
+                         Grid.Column="1"
+                        Text="{x:Static helpers:IconFont.CurrencyEur}"
+                        IsVisible="{Binding MoneyIcon2Visible}"
+                        Style="{StaticResource IconStyle}">
+                    </Label>
+                    <Label
+                        Grid.Row="4"
+                         Grid.Column="2"
+                        Text="{x:Static helpers:IconFont.CurrencyEur}"
+                        IsVisible="{Binding MoneyIcon3Visible}"                        
+                        Style="{StaticResource IconStyle}">
+                    </Label>
+
+                    <Frame
+                        Grid.Row="4"
+                        Grid.Column="4"
+                        Padding="0"
+                        Margin="0"
+                        BorderColor="Transparent"
+                        BackgroundColor="Transparent"
+                        CornerRadius="999">
+                        <effectsView:SfEffectsView
+                            TouchDownEffects="Ripple"
+                            FadeOutRipple="True"
+                            RippleAnimationDuration="300"
+                            RippleBackground="Black"
+                            TouchUp="TapGestureRecognizer_Tapped">
+                            <Label
+                                Text="{Binding StarIconText}"
+                                Style="{StaticResource IconStyle}"
+                                FontSize="26"
+                                VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                            </Label>
+                            
+                        </effectsView:SfEffectsView>
+                    </Frame>
+
+                </Grid>
+            </Grid>
+    </effectsView:SfEffectsView>
+        </Frame>
+
+
+
+
+</ContentView>

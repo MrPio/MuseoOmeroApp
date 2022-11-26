@@ -33,8 +33,8 @@ public static class MauiProgram
 
 				static void MakeStatusBarTranslucent(Android.App.Activity activity)
 				{
-					activity.Window.SetFlags(Android.Views.WindowManagerFlags.LayoutNoLimits, Android.Views.WindowManagerFlags.LayoutNoLimits);
-					activity.Window.ClearFlags(Android.Views.WindowManagerFlags.TranslucentStatus);
+					//activity.Window.SetFlags(Android.Views.WindowManagerFlags.LayoutNoLimits, Android.Views.WindowManagerFlags.LayoutNoLimits);
+					//activity.Window.ClearFlags(Android.Views.WindowManagerFlags.TranslucentStatus);
 					activity.Window.SetStatusBarColor(Android.Graphics.Color.Rgb(8, 112, 59));
 					activity.Window.SetNavigationBarColor(Android.Graphics.Color.Rgb(8, 112, 59));
 				}

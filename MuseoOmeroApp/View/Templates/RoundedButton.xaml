@@ -8,11 +8,11 @@
         <ResourceDictionary>
             <Style x:Key="ButtonStyle" TargetType="Button">
                 <Setter Property="Margin" Value="0,40,0,12"></Setter>
-                <Setter Property="HeightRequest" Value="52"></Setter>
+                <Setter Property="HeightRequest" Value="{Binding HeightRequest}"></Setter>
                 <Setter Property="WidthRequest" Value="240"></Setter>
-                <Setter Property="FontSize" Value="18"></Setter>
+                <Setter Property="FontSize" Value="{Binding FontSize}"></Setter>
                 <Setter Property="BackgroundColor" Value="{StaticResource Primary}"></Setter>
-                <Setter Property="CornerRadius" Value="26"></Setter>
+                <Setter Property="CornerRadius" Value="{Binding CornerRadius}"></Setter>
                 <Setter Property="BorderWidth" Value="0"></Setter>
                 <Setter Property="BorderColor" Value="{StaticResource Primary}"></Setter>
             </Style>

@@ -6,15 +6,15 @@
     <DataTemplate
         x:Key="FAB">
         <Grid
-            RowDefinitions="*,auto,30"
-            ColumnDefinitions="*,auto,20">
+            RowDefinitions="*,auto,42"
+            ColumnDefinitions="*,auto,22">
                 <Button
                     Grid.Row="1"
                     Grid.Column="1"
                     CornerRadius="999"
-                    WidthRequest="80"
-                    HeightRequest="80"
-                    FontSize="48"
+                    WidthRequest="{Binding Size}"
+                    HeightRequest="{Binding Size}"
+                    FontSize="{Binding FontSize}"
                     FontFamily="MaterialDesignIcons" 
                     Text="{Binding TextIcon}"
                     TextColor="White"
@@ -23,7 +23,7 @@
                     Released="Button_Released"
                     
                     CommandParameter="{Binding .}"
-                        Command="{Binding OnClick}">
+                    Command="{Binding OnClick}">
 
                 <Button.Shadow>
                     <Shadow Brush="Black"
