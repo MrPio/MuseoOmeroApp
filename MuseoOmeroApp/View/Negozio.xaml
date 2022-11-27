@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:templates="clr-namespace:MuseoOmeroApp.View.Templates"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewmodel="clr-namespace:MuseoOmeroApp.ViewModel"
              x:Class="MuseoOmeroApp.Pages.Negozio"
              Title="Negozio"
@@ -12,33 +13,50 @@
 
     <ContentPage.Content>
         <Grid>
-            <VerticalStackLayout>
+            <!--<VerticalStackLayout>
                 <Image
-                    Opacity="0.085"
+                    Opacity="0.05"
                     Source="background_image.png"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand">
                 </Image>
-            </VerticalStackLayout>
+            </VerticalStackLayout>-->
 
             <templates:TopBar 
-                ZIndex="1"
                 BindingContext="{Binding TopBar}">
             </templates:TopBar>
-            
+
+
 
             <!-- Screen content-->
             <Grid RowDefinitions="64,*,28">
-                <ScrollView
-                        Grid.Row="1"
-                        Padding="0,50,0,0"
-                            Margin="12,0,12,0">
+                <ScrollView 
+                    x:Name="scrl"
+                    Grid.Row="1">
+
+                    <VerticalStackLayout >
+
+                        <templates:NegozioItem
+                                BindingContext="{Binding neg}">
+                    </templates:NegozioItem>
+                </VerticalStackLayout>
+                </ScrollView>
+                <!--<ScrollView
+                    Grid.Row="1">
                     <VerticalStackLayout
-                            Spacing="20">
-                        <!-- Center Big Icon -->
+                        Margin="10,0,10,0"
+                        Spacing="10">
+                        <Rectangle
+                            HeightRequest="44"></Rectangle>
+                        --><!-- Center Big Icon --><!--
                         <templates:BigRoundedIcon
                             BindingContext="{Binding BigRoundedIcon}">
                         </templates:BigRoundedIcon>
+
+                        <templates:NegozioItem
+                                BindingContext="{Binding neg}">
+                        </templates:NegozioItem>
+
 
                         <Frame
                             BorderColor="Transparent"
@@ -56,8 +74,9 @@
                                 </BindableLayout.ItemTemplate>
                             </StackLayout>
                         </Frame>
+
                     </VerticalStackLayout>
-                </ScrollView>
+                </ScrollView>-->
             </Grid>
 
             <!-- Top & Bottom Waves-->

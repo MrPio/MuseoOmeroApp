@@ -7,7 +7,12 @@ public partial class Negozio : ContentPage
 	public Negozio()
 	{
 		InitializeComponent();
-	}
+        var tmp = scrl.Content;
+        scrl.Content = null;
+        scrl.Content = tmp;
+    }
+
+
 
     protected override async void OnAppearing()
     {
@@ -31,5 +36,10 @@ public partial class Negozio : ContentPage
     {
         base.OnDisappearing();
         ((NegozioViewModel)BindingContext).BigRoundedIcon.Opacity = 0;
+    }
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+
     }
 }

@@ -5,8 +5,9 @@
              xmlns:helpers="clr-namespace:MuseoOmeroApp.Helpers"             
              x:Class="MuseoOmeroApp.View.Templates.TopBar">
 
-        <Grid RowDefinitions="54,auto,*"
-                      ZIndex="1">
+        <Grid 
+            ZIndex="1"
+            RowDefinitions="54,auto,*">
 
             <Grid ColumnDefinitions="60,*,60"
             Padding="20,12,20,0"

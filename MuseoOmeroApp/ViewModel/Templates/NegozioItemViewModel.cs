@@ -61,7 +61,13 @@ namespace MuseoOmeroApp.ViewModel.Templates
         public bool MoneyIcon2Visible { get { return _moneyIcon2Visible; } set { _moneyIcon2Visible = value; OnPropertyChanged(nameof(MoneyIcon2Visible)); } }
         public bool MoneyIcon3Visible { get { return _moneyIcon3Visible; } set { _moneyIcon3Visible = value; OnPropertyChanged(nameof(MoneyIcon3Visible)); } }
 
+        private RowDefinitionCollection _gridRows= new RowDefinitionCollection() {new RowDefinition(120),};
+        public RowDefinitionCollection GridRows { get { return _gridRows; } set { _gridRows = value; OnPropertyChanged(nameof(GridRows)); } }
+        
         public string StarIconText { get { return _starIconText; } set { _starIconText = value; OnPropertyChanged(nameof(StarIconText)); } }
         //{ get {return Preferred ? IconFont.Star : IconFont.StarOutline;} }
+
+        private double _height = 120;
+        public double Height { get { return _height;} set { _height = value; OnPropertyChanged(); } }
     }
 }

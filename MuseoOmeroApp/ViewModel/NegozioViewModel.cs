@@ -21,6 +21,7 @@ namespace MuseoOmeroApp.ViewModel
             new(DPI.TERTIARY,"Mostra","Ingresso a pagamento.",IconFont.Paw,2,false),
             new(DPI.TERTIARY,"Laboratorio","Ingresso a pagamento.",IconFont.Puzzle,3,false),
         };
+        public NegozioItemViewModel neg { get; set; } = new(DPI.TERTIARY, "Laboratorio", "Ingresso a pagamento.", IconFont.Puzzle, 3, false);
         public ObservableCollection<NegozioItemViewModel> NegozioItems
         {
             get { return _negozioItems; }
