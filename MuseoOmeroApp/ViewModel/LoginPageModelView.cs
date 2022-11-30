@@ -23,7 +23,7 @@ namespace MuseoOmeroApp.ViewModel
             #if ANDROID
             new RowDefinition { Height = 70 * DensityFactor },
             new RowDefinition { Height = GridLength.Star },
-            new RowDefinition { Height = 118 * DensityFactor }
+            new RowDefinition { Height = 70 * DensityFactor }
             #else
             new RowDefinition { Height = 80 },
             new RowDefinition { Height = GridLength.Star },
@@ -39,7 +39,7 @@ namespace MuseoOmeroApp.ViewModel
             new RowDefinition { Height = GridLength.Auto },
             new RowDefinition { Height = GridLength.Star },
             new RowDefinition { Height = GridLength.Auto },
-            new RowDefinition { Height = 92 * DensityFactor }
+            new RowDefinition { Height = 46 * DensityFactor }
             #else
             new RowDefinition { Height = 50 },
             new RowDefinition { Height = GridLength.Auto },

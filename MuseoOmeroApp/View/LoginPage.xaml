@@ -17,7 +17,7 @@
 
 
 
-                    <BoxView HeightRequest="50"
+                    <BoxView HeightRequest="30"
                              Color="Transparent"></BoxView>
 
                     <Image Source="logo_museo_omero_small_green.png"
@@ -71,12 +71,12 @@
                     
                     <Label Text="Password"
                 Margin="0,20,0,0"
-                FontFamily="LatoLt"
+                FontFamily="Lato"
                 FontSize="22"
                 TextColor="#1b1b1b"></Label>
 
                     <Grid ColumnDefinitions="0,auto,*,24"
-                ColumnSpacing="16">
+                        ColumnSpacing="16">
                         <Grid Grid.Column="1">
                             <Image  Source="shield.png" WidthRequest="46"></Image>
                             <Image x:Name="PasswordIcon" Source="shield.png" WidthRequest="46"></Image>
@@ -150,6 +150,10 @@
                    ScaleY="1.05"
             HorizontalOptions="Fill"/>
         </Grid>
+        
+        <!-- Top & Bottom Waves-->
+        <!--<templates:TopAndBottomWaves x:Name="TopAndBottomWaves"/>-->
+
 
         <!--Univpm Logo-->
         <!--<Grid RowDefinitions="*,auto,10">

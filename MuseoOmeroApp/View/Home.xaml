@@ -25,13 +25,11 @@
                     VerticalOptions="FillAndExpand">
                 </Image>
             </VerticalStackLayout>-->
-            
+
+            <!-- TopBar-->
             <templates:TopBar 
-                
                 BindingContext="{Binding TopBar}">
             </templates:TopBar>
-
-            
 
             <!-- Screen content-->
             <Grid RowDefinitions="64,*,28">
@@ -190,7 +188,6 @@
 
             <!-- Top & Bottom Waves-->
             <templates:TopAndBottomWaves x:Name="TopAndBottomWaves"/>
-
 
             <!-- Startup Animation 
             <skia:SKLottieView

@@ -3,25 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MuseoOmeroApp.View.Templates.TopAndBottomWaves">
     
-    <Grid x:Name="WavesGrid" RowDefinitions="64,auto,*,auto,14">
-        <Image x:Name="BlockTop" Grid.Row="0" 
-                    Source="block.png" 
-                           ScaleX="100"
-                           ScaleY="1.35"
-                    HorizontalOptions="Fill"/>
-        <Image Grid.Row="1" 
-                           ScaleX="1.02"
-                        Source="wave2" 
-                        HorizontalOptions="Fill"/>
+    <Grid 
+        x:Name="WavesGrid" 
+        RowDefinitions="64,auto,*,auto,14">
+        <Image 
+            x:Name="BlockTop" Grid.Row="0" 
+            Source="block.png" 
+            ScaleX="100"
+            ScaleY="1.35"
+            HorizontalOptions="Fill"/>
+        <Image 
+            Grid.Row="1" 
+            ScaleX="1.02"
+            Source="wave2" 
+            HorizontalOptions="Fill"/>
 
-        <Image Grid.Row="3" 
-                           ScaleX="1.02"
-                        Source="wave" 
-                        HorizontalOptions="Fill"/>
+        <Image 
+            Grid.Row="3" 
+            ScaleX="1.02"
+            Source="wave" 
+            HorizontalOptions="Fill"/>
         <Image Grid.Row="4"
-                    Source="block.png" 
-                           ScaleX="100"
-                           ScaleY="1.05"
-                    HorizontalOptions="Fill"/>
+            Source="block.png" 
+            ScaleX="100"
+            ScaleY="1.05"
+            HorizontalOptions="Fill"/>
     </Grid>
 </ContentView>

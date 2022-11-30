@@ -1,9 +1,11 @@
-﻿using MuseoOmeroApp.Helpers;
+﻿using Java.Lang;
+using MuseoOmeroApp.Helpers;
 
 namespace MuseoOmeroApp.ViewModel.Templates
 {
     public class NegozioItemViewModel: BindableObject
     {
+        public bool IsExpanded { get; set; } = false;
         private Color _backgroundColor { get; set; }
         private string _title { get; set; }
         private string _subtitle { get; set; }
@@ -68,6 +70,6 @@ namespace MuseoOmeroApp.ViewModel.Templates
         //{ get {return Preferred ? IconFont.Star : IconFont.StarOutline;} }
 
         private double _height = 120;
-        public double Height { get { return _height;} set { _height = value; OnPropertyChanged(); } }
+        public double Height { get { return _height;} set { _height = value; OnPropertyChanged(nameof(Height)); } }
     }
 }

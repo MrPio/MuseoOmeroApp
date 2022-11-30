@@ -127,14 +127,14 @@ public partial class Home : ContentPage
         ProvenienzaBorder.BackgroundColor = Colors.White;
     }
 
-    private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-    {
-        if (await DisplayAlert("Vuoi davvero uscire?", "Dovrai eseguire  di nuovo il login per rientrare.", "Yes", "No"))
-        {
-            Preferences.Clear("username");
-            Preferences.Clear("access_token");
-            Application.Current.MainPage = new RegisterPage();
-        }
-    }
+    //private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+    //{
+    //    if (await DisplayAlert("Vuoi davvero uscire?", "Dovrai eseguire  di nuovo il login per rientrare.", "Yes", "No"))
+    //    {
+    //        Preferences.Clear("username");
+    //        Preferences.Clear("access_token");
+    //        Application.Current.MainPage = new RegisterPage();
+    //    }
+    //}
 
 }

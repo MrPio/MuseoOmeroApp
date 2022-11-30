@@ -1,3 +1,5 @@
+using MuseoOmeroApp.Pages;
+
 namespace MuseoOmeroApp.View.Templates;
 
 public partial class TopBar : ContentView
@@ -10,9 +12,9 @@ public partial class TopBar : ContentView
     {
         if (await Application.Current.MainPage.DisplayAlert("Vuoi davvero uscire?", "Dovrai eseguire  di nuovo il login per rientrare.", "Yes", "No"))
         {
-            Preferences.Clear("username");
-            Preferences.Clear("access_token");
-            Application.Current.MainPage = new RegisterPage();
+            Preferences.Remove("username");
+            Preferences.Remove("access_token");
+            Application.Current.MainPage = new LoginPage();
         }
     }
 }

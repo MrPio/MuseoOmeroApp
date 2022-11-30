@@ -7,9 +7,9 @@ public partial class Negozio : ContentPage
 	public Negozio()
 	{
 		InitializeComponent();
-        var tmp = scrl.Content;
-        scrl.Content = null;
-        scrl.Content = tmp;
+        var tmp = NegozioScrollView.Content;
+        NegozioScrollView.Content = null;
+        NegozioScrollView.Content = tmp;
     }
 
 

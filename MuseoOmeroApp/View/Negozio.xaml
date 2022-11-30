@@ -30,32 +30,18 @@
 
             <!-- Screen content-->
             <Grid RowDefinitions="64,*,28">
-                <ScrollView 
-                    x:Name="scrl"
-                    Grid.Row="1">
-
-                    <VerticalStackLayout >
-
-                        <templates:NegozioItem
-                                BindingContext="{Binding neg}">
-                    </templates:NegozioItem>
-                </VerticalStackLayout>
-                </ScrollView>
-                <!--<ScrollView
+                <ScrollView
+                    x:Name="NegozioScrollView"
                     Grid.Row="1">
                     <VerticalStackLayout
                         Margin="10,0,10,0"
                         Spacing="10">
                         <Rectangle
                             HeightRequest="44"></Rectangle>
-                        --><!-- Center Big Icon --><!--
+                         <!--Center Big Icon--> 
                         <templates:BigRoundedIcon
                             BindingContext="{Binding BigRoundedIcon}">
                         </templates:BigRoundedIcon>
-
-                        <templates:NegozioItem
-                                BindingContext="{Binding neg}">
-                        </templates:NegozioItem>
 
 
                         <Frame
@@ -65,18 +51,22 @@
 
                             <StackLayout
                                 Orientation="Vertical"
-                                Spacing="10"
-                                BindableLayout.ItemsSource="{Binding NegozioItems}">
+                                Spacing="10">
+                                <templates:NegozioItem BindingContext="{Binding BigliettoMuseo}"/>
+                                <templates:NegozioItem BindingContext="{Binding BigliettoMostra}"/>
+                                <templates:NegozioItem BindingContext="{Binding BigliettoLaboratorio}"/>
+
+                                <!--BindableLayout.ItemsSource="{Binding NegozioItems}">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <templates:NegozioItem/>
                                     </DataTemplate>
-                                </BindableLayout.ItemTemplate>
+                                </BindableLayout.ItemTemplate>-->
                             </StackLayout>
                         </Frame>
 
                     </VerticalStackLayout>
-                </ScrollView>-->
+                </ScrollView>
             </Grid>
 
             <!-- Top & Bottom Waves-->
