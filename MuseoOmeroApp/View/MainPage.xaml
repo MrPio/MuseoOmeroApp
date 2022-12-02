@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MuseoOmeroApp.View.MainPage"
+             xmlns:tabs="http://sharpnado.com"
+             xmlns:viewModels="clr-namespace:MuseoOmeroApp.ViewModel"
+             xmlns:templates="clr-namespace:MuseoOmeroApp.View.Templates"             
+             xmlns:pages="clr-namespace:MuseoOmeroApp.Pages"
+             xmlns:helper="clr-namespace:MuseoOmeroApp.Helpers"
+             x:DataType="viewModels:MainPageViewModel"     
+             tabs:TouchEffect.Color="{StaticResource Color1}"
+             Title="MainPage">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BottomTab" TargetType="tabs:BottomTabItem">
+                <Setter Property="SelectedTabColor" Value="{StaticResource Color5}" />
+                <Setter Property="UnselectedLabelColor" Value="{StaticResource Color1}" />
+                <Setter Property="FontFamily" Value="MaterialDesignIcons" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <Grid>
+        <!-- CenterScreen-->
+        <Grid RowDefinitions="64,*,28">
+            <tabs:ViewSwitcher 
+            Grid.Row="1"
+            x:Name="Switcher"
+            Grid.RowSpan="3"
+            Margin="0"
+            Animate="True"
+            SelectedIndex="{Binding SelectedViewModelIndex, Mode=TwoWay}"
+                PropertyChanging="Switcher_PropertyChanging"
+                PropertyChanged="Switcher_PropertyChanged">
+                <tabs:DelayedView 
+                x:TypeArguments="pages:Home"
+                AccentColor="{StaticResource Primary}"
+                Animate="True"
+                BindingContext="{Binding HomeViewModel}"
+                UseActivityIndicator="True" />
+                <tabs:DelayedView 
+                x:TypeArguments="pages:Prova"
+                AccentColor="{StaticResource Primary}"
+                Animate="True"
+                UseActivityIndicator="True" />
+                <!--<tabs:DelayedView 
+                x:TypeArguments="pages:Home"
+                AccentColor="{StaticResource Primary}"
+                Animate="True"
+                UseActivityIndicator="True" />
+            <tabs:DelayedView 
+                x:TypeArguments="pages:Home"
+                AccentColor="{StaticResource Primary}"
+                Animate="True"
+                UseActivityIndicator="True" />-->
+                <!--<tabs:LazyView x:TypeArguments="pages:Home" Animate="True" />-->
+            </tabs:ViewSwitcher>
+        </Grid>
+        
+        <!-- TopBar-->
+        <templates:TopBar/>
+
+        <!-- Top & Bottom Waves-->
+        <templates:TopAndBottomWaves x:Name="TopAndBottomWaves" TranslationX="{Binding WavesTranslation}"/>
+        <templates:TopAndBottomWaves x:Name="TopAndBottomWaves2" TranslationX="{Binding Waves2Translation}"/>
+        
+        <!-- BottomBar-->
+        <Grid
+            RowDefinitions="*,auto"
+>
+            <tabs:TabHostView 
+                
+                Grid.Row="1"
+                HeightRequest="60"
+                Padding="32,0"
+                HorizontalOptions="Center"
+                BackgroundColor="Transparent"
+                SegmentedOutlineColor="Transparent"
+                IsSegmented="True"
+                CornerRadius="30"
+                Orientation="Horizontal"
+                SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}">
+                <tabs:BottomTabItem x:Name="tab1" Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Home}" LabelSize="{Binding FontSize1}" />
+                <tabs:BottomTabItem x:Name="tab2" Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Cart}" LabelSize="{Binding FontSize2}" />
+                <tabs:BottomTabItem x:Name="tab3" Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Navigation}" LabelSize="{Binding FontSize3}" />
+                <tabs:BottomTabItem x:Name="tab4" Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Comment}" LabelSize="{Binding FontSize4}" />
+            </tabs:TabHostView>
+        </Grid>
+    </Grid>
+</ContentPage>

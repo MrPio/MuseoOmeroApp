@@ -4,6 +4,9 @@ using Microsoft.UI.Windowing;
 using Windows.Graphics;
 #endif
 using MuseoOmeroApp.Pages;
+using MuseoOmeroApp.View;
+using MuseoOmeroApp.ViewModel;
+
 namespace MuseoOmeroApp;
 
 public partial class App : Application
@@ -26,6 +29,9 @@ public partial class App : Application
             appWindow.Resize(new SizeInt32(WindowWidth, WindowHeight));
 #endif
         });
+
+        MainPage = new MainPage(new MainPageViewModel());
+        return;
 
         //TODO API
         if (Preferences.ContainsKey("access_token"))

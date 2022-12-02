@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:helpers="clr-namespace:MuseoOmeroApp.Helpers"
              xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
@@ -8,14 +8,13 @@
              xmlns:viewmodel="clr-namespace:MuseoOmeroApp.ViewModel"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MuseoOmeroApp.Pages.Home"
-             Title="Home"
              BackgroundColor="#48FFF384">
 
-    <ContentPage.BindingContext>
-        <viewmodel:HomeModelView/>
-    </ContentPage.BindingContext>
+    <ContentView.BindingContext>
+        <viewmodel:HomeViewModel/>
+    </ContentView.BindingContext>
 
-    <ContentPage.Content>
+    <ContentView.Content>
         <Grid>
             <!--<VerticalStackLayout>
                 <Image
@@ -26,15 +25,11 @@
                 </Image>
             </VerticalStackLayout>-->
 
-            <!-- TopBar-->
-            <templates:TopBar 
-                BindingContext="{Binding TopBar}">
-            </templates:TopBar>
+
 
             <!-- Screen content-->
-            <Grid RowDefinitions="64,*,28">
+            <!--<Grid RowDefinitions="64,*,28">-->
                     <ScrollView
-                        Grid.Row="1"
                         Padding="0,50,0,0"
                             Margin="30,0,30,0">
                         <VerticalStackLayout
@@ -184,10 +179,9 @@
                             </Frame>
                         </VerticalStackLayout>
                     </ScrollView>
-            </Grid>
+            <!--</Grid>-->
 
-            <!-- Top & Bottom Waves-->
-            <templates:TopAndBottomWaves x:Name="TopAndBottomWaves"/>
+
 
             <!-- Startup Animation 
             <skia:SKLottieView
@@ -198,8 +192,8 @@
                           RepeatMode="Reverse"
                           HorizontalOptions="Center" /> -->
 
-            <!-- Bottom bar rounded corder-->
-            <templates:BottomBarRoundedCorner/>
+            <!-- Bottom bar rounded corder--><!--
+            <templates:BottomBarRoundedCorner/>-->
 
             <!-- FAB -->
             <Grid
@@ -207,6 +201,6 @@
                 BindableLayout.ItemTemplate="{StaticResource FAB}">
             </Grid>
         </Grid>
-    </ContentPage.Content>
+    </ContentView.Content>
 
-</ContentPage>
+</ContentView>

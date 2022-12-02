@@ -12,7 +12,7 @@ namespace MuseoOmeroApp.ViewModel
 {
     public partial class NegozioViewModel : ObservableObject
     {
-        public TopBarViewModel TopBar { get; set; } = new("Negozio");
+        public TopBarViewModel TopBar { get; set; } = new();
 
         public BigRoundedIconViewModel BigRoundedIcon { get; set; } = new(IconFont.Cart);
 

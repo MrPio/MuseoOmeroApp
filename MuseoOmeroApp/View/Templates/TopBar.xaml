@@ -3,64 +3,47 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:effectsView="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              xmlns:helpers="clr-namespace:MuseoOmeroApp.Helpers"             
+             xmlns:viewModels="clr-namespace:MuseoOmeroApp.ViewModel"             
              x:Class="MuseoOmeroApp.View.Templates.TopBar"
              ZIndex="1">
 
-        <Grid 
-            RowDefinitions="54,auto,*">
-
-            <Grid ColumnDefinitions="60,*,60"
-            Padding="20,12,20,0"
-            ColumnSpacing="16"
-             BackgroundColor="{StaticResource Tertiary}">
-
-                <!-- Title & sub-Title -->
-                <Grid Grid.Column="1"
-                            RowDefinitions="*,*">
-                    <Label
-                    TextColor="Black"
-                    FontSize="19"
+    <Grid
+        ColumnDefinitions="*,auto"
+        RowDefinitions="auto,*"
+        Padding="0,24,0,0">
+        <Label
+            Grid.ColumnSpan="2"
+                    TextColor="{StaticResource Color5}"
+                    FontSize="24"
                     HorizontalTextAlignment="Center"
                     FontFamily="Lato"
-                    Text="MuseoOmero"></Label>
-                    <Label
-                    x:Name="Title"
-                    Grid.Row="1"
-                    TextColor="Black"
-                    FontSize="18"
-                    HorizontalTextAlignment="Center"
-                    FontFamily="LatoLightItalic"
-                    Text="{Binding Title}"></Label>
-                </Grid>
+                    Text="{Binding Source={RelativeSource AncestorType={x:Type viewModels:MainPageViewModel}}, Path=Title}">
+        </Label>
 
-                <Frame
-                Grid.Column="2"
+        <Frame
+            Grid.Column="1"
                 Padding="0"
-                Margin="0"
+                Margin="0,0,4,0"
                 BackgroundColor="Transparent"
                 BorderColor="Transparent"
+            HeightRequest="34"
+            WidthRequest="60"
                 CornerRadius="999">
-                    <effectsView:SfEffectsView
+            <effectsView:SfEffectsView
                     LongPressEffects="Ripple"
-                        TouchDownEffects="Ripple"
+                    TouchDownEffects="Ripple"
                     FadeOutRipple="True"
-                    RippleBackground="{StaticResource Primary}"
-                        TouchUp="TapGestureRecognizer_Tapped">
-                        <Label 
+                    RippleBackground="{StaticResource Color5}"
+                    TouchUp="TapGestureRecognizer_Tapped">
+                <Label 
                         FontFamily="MaterialDesignIcons" 
                         Text="{x:Static helpers:IconFont.LogoutVariant}"
-                        TextColor="{StaticResource Primary}"
+                        TextColor="{StaticResource Color5}"
                         FontSize="26"
                         VerticalOptions="Center"
                         HorizontalOptions="Center">
-                        </Label>
-                    </effectsView:SfEffectsView>
-                </Frame>
-            </Grid>
-            <Image 
-            Grid.Row="1" 
-            Source="top_bar" 
-            ScaleX="1.02"
-            HorizontalOptions="Fill"/>
-        </Grid>
+                </Label>
+            </effectsView:SfEffectsView>
+        </Frame>
+    </Grid>
 </ContentView>

@@ -10,7 +10,7 @@
             android:TabbedPage.IsSwipePagingEnabled="True"
             android:TabbedPage.IsSmoothScrollEnabled="True"
             >
-    <local:Home Title="Home" IconImageSource="home" />
+    <!--<local:Home Title="Home" IconImageSource="home" />-->
     <local:Negozio Title="Negozio" IconImageSource="shop"/>
     <local:Biglietteria Title="Biglietteria" IconImageSource="ticket"/>
     <local:Prenotazioni Title="Prenotazioni" IconImageSource="navigation"/>

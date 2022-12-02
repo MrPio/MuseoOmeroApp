@@ -69,6 +69,7 @@
 	  <PackageReference Include="CommunityToolkit.Maui" Version="2.0.0" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	  <PackageReference Include="Sharpnado.Tabs.Maui" Version="3.0.0" />
 	  <PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.61" />
 	  <PackageReference Include="Syncfusion.Maui.Core" Version="20.3.57" />
 	</ItemGroup>
@@ -89,10 +90,16 @@
 	  <MauiXaml Update="View\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\MainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\Negozio.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\Prenotazioni.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\Prova.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\RegisterPage.xaml">

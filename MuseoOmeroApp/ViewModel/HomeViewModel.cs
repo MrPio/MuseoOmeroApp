@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace MuseoOmeroApp.ViewModel
 {
-    public class HomeModelView : BindableObject
+    public class HomeViewModel : BindableObject
     {
         ObservableCollection<RoundedEntryViewModel> _anagraficaEntries = new()
         {
@@ -59,7 +59,7 @@ namespace MuseoOmeroApp.ViewModel
             })),
         };
 
-        public TopBarViewModel TopBar { get; set; } = new("Anagrafica");
+        public TopBarViewModel TopBar { get; set; } = new();
 
         public BigRoundedIconViewModel BigRoundedIcon { get; set; } = new(IconFont.BagPersonal);
 

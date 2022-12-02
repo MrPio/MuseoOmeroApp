@@ -1,6 +1,9 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Maui.LifecycleEvents;
 using MuseoOmeroApp.api;
+using MuseoOmeroApp.View;
+using MuseoOmeroApp.ViewModel;
+using Sharpnado.Tabs;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 using Syncfusion.Maui.Core.Hosting;
 
@@ -26,6 +29,7 @@ public static class MauiProgram
 				fonts.AddFont(filename: "materialdesignicons-webfont.ttf", alias: "MaterialDesignIcons");
 			})
 			.UseSkiaSharp()
+			.UseSharpnadoTabs(loggerEnable: false)
             .ConfigureLifecycleEvents(events =>
 			{
 #if ANDROID
@@ -40,7 +44,11 @@ public static class MauiProgram
 				}
 #endif
 			});
-		builder.ConfigureSyncfusionCore();
+
+        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<MainPageViewModel>();
+
+        builder.ConfigureSyncfusionCore();
         return builder.Build();
 	}
 }

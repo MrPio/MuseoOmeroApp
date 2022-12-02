@@ -5,7 +5,7 @@
     
     <Grid 
         x:Name="WavesGrid" 
-        RowDefinitions="64,auto,*,auto,14">
+        RowDefinitions="58,auto,*,auto,44">
         <Image 
             x:Name="BlockTop" Grid.Row="0" 
             Source="block.png" 
