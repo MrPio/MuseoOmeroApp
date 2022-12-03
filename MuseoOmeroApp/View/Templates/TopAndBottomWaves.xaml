@@ -1,32 +1,46 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MuseoOmeroApp.View.Templates.TopAndBottomWaves">
+             xmlns:viewModels="clr-namespace:MuseoOmeroApp.ViewModel.Templates"
+             x:Class="MuseoOmeroApp.View.Templates.TopAndBottomWaves"
+             x:DataType="viewModels:TopAndBottomWavesViewModel">
     
     <Grid 
-        x:Name="WavesGrid" 
-        RowDefinitions="58,auto,*,auto,44">
+        x:Name="WavesGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding TopWave}"/>
+            <RowDefinition Height="{Binding Intersection}"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="{Binding Intersection}"/>
+            <RowDefinition Height="{Binding BottomWave}"/>
+        </Grid.RowDefinitions>
+        
+        <Rectangle
+            Grid.Row="0" 
+            Grid.RowSpan="2"
+            BackgroundColor="{StaticResource Color2}">
+        </Rectangle>
         <Image 
-            x:Name="BlockTop" Grid.Row="0" 
-            Source="block.png" 
-            ScaleX="100"
-            ScaleY="1.35"
-            HorizontalOptions="Fill"/>
-        <Image 
+            InputTransparent="False"
             Grid.Row="1" 
+            Grid.RowSpan="2"
             ScaleX="1.02"
-            Source="wave2" 
+            Source="wave2.png" 
             HorizontalOptions="Fill"/>
 
         <Image 
-            Grid.Row="3" 
+            InputTransparent="False"
+            Grid.Row="4" 
+            Grid.RowSpan="2"
             ScaleX="1.02"
-            Source="wave" 
+            Source="wave.png" 
             HorizontalOptions="Fill"/>
-        <Image Grid.Row="4"
-            Source="block.png" 
-            ScaleX="100"
-            ScaleY="1.05"
-            HorizontalOptions="Fill"/>
+        <Rectangle
+            Grid.Row="5" 
+            Grid.RowSpan="2"
+            BackgroundColor="{StaticResource Color2}">
+        </Rectangle>
     </Grid>
 </ContentView>

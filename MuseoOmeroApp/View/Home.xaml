@@ -10,9 +10,9 @@
              x:Class="MuseoOmeroApp.Pages.Home"
              BackgroundColor="#48FFF384">
 
-    <ContentView.BindingContext>
+    <!--<ContentView.BindingContext>
         <viewmodel:HomeViewModel/>
-    </ContentView.BindingContext>
+    </ContentView.BindingContext>-->
 
     <ContentView.Content>
         <Grid>
@@ -24,8 +24,6 @@
                     VerticalOptions="FillAndExpand">
                 </Image>
             </VerticalStackLayout>-->
-
-
 
             <!-- Screen content-->
             <!--<Grid RowDefinitions="64,*,28">-->

@@ -1,6 +1,7 @@
-﻿using CommunityToolkit.Maui;
+﻿	using CommunityToolkit.Maui;
 using Microsoft.Maui.LifecycleEvents;
 using MuseoOmeroApp.api;
+using MuseoOmeroApp.Pages;
 using MuseoOmeroApp.View;
 using MuseoOmeroApp.ViewModel;
 using Sharpnado.Tabs;

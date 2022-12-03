@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MuseoOmeroApp.Pages.IMieiTitoli"
+             xmlns:helpers="clr-namespace:MuseoOmeroApp.Helpers"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             xmlns:effectsView="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:templates="clr-namespace:MuseoOmeroApp.View.Templates"
+             xmlns:viewmodel="clr-namespace:MuseoOmeroApp.ViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewmodel:IMieiTitoliViewModel"
+             BackgroundColor="{StaticResource Color4}">
+
+    <ContentView.Content>
+        <Grid>
+            <!-- Screen content-->
+            <ScrollView
+                Padding="0,50,0,0"
+                Margin="30,0,30,0">
+                <VerticalStackLayout
+                    Spacing="20">
+                    <Label>
+                        Ciao
+                    </Label>
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

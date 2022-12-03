@@ -127,22 +127,27 @@
         </Grid>
 
         <!-- Top and Botton waves -->
-        <Grid RowDefinitions="{Binding WavesGrid}">
+        <Grid RowDefinitions="{Binding WavesGrid}"
+              InputTransparent="True">
+            
             <Image Grid.Row="0" 
+                   InputTransparent="True"
             Source="block.png" 
                    ScaleX="100"
                    ScaleY="1.02"
             HorizontalOptions="Fill"/>
             <Image Grid.Row="1" 
+                   InputTransparent="True"
             Source="wave2.png" 
             ScaleX="1.02"                   
-            HorizontalOptions="FillAndExpand"/>
+            HorizontalOptions="Fill"/>
 
 
             <Image Grid.Row="3" 
+                   InputTransparent="True"
             Source="wave.png" 
             ScaleX="1.02"                   
-            HorizontalOptions="FillAndExpand"/>
+            HorizontalOptions="Fill"/>
 
             <Image Grid.Row="4" 
             Source="block.png" 

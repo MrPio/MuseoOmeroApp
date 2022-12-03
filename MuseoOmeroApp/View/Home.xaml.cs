@@ -10,7 +10,7 @@ public partial class Home : ContentView
     public Home()
 	{
 		InitializeComponent();
-
+        BindingContext = new HomeViewModel();
         /*new Thread(() =>
         {
             Random rnd = new Random();
@@ -21,7 +21,7 @@ public partial class Home : ContentView
                 "a,b,c,d,e,f,g".Split(',')[rnd.Next(7)];
             }
         }).Start();*/
-        
+
     }
 
     //protected override async void OnAppearing()
@@ -70,8 +70,6 @@ public partial class Home : ContentView
     //    };
     //    BlockTop.ScaleY = 1.35;
     //}
-
-
 
     private void DatePicker_Focused(object sender, FocusEventArgs e)
     {
@@ -126,6 +124,11 @@ public partial class Home : ContentView
         ProvenienzaBorder.StrokeThickness = 1;
         ProvenienzaBorder.BackgroundColor = Colors.White;
     }
+
+    //private void ContentView_BindingContextChanged(object sender, EventArgs e)
+    //{
+    //    BindingContext??=new HomeViewModel();
+    //}
 
     //private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
     //{

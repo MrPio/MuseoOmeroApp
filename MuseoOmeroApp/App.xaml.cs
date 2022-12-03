@@ -31,6 +31,7 @@ public partial class App : Application
         });
 
         MainPage = new MainPage(new MainPageViewModel());
+        DPI.mainPage = MainPage;
         return;
 
         //TODO API

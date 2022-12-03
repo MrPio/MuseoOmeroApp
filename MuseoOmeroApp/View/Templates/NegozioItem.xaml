@@ -154,7 +154,7 @@
                     <Image 
                         Grid.Row="0"
                         Source="dotted_line"
-                        HorizontalOptions="FillAndExpand">
+                        HorizontalOptions="Fill">
                     </Image>                        
                 </Grid>
             </Grid>

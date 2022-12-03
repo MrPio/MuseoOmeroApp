@@ -4,11 +4,10 @@
              x:Class="MuseoOmeroApp.View.Templates.BigRoundedIcon">
     <Frame
         x:Name="BigIconFrame"
-        Grid.Row="0"
         Opacity="{Binding Opacity}"
         BorderColor="Transparent"
         BackgroundColor="{StaticResource Primary}"
-        CornerRadius="999"
+        CornerRadius="800"
         WidthRequest="{Binding BigIconSize}"
         HeightRequest="{Binding BigIconSize}">
         <Label 

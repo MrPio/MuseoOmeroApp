@@ -17,7 +17,7 @@ namespace MuseoOmeroApp.ViewModel.Templates
         public double BigIconIconSize { get; set; } = DPI.DENSITY_FACTOR * 60;
 
         public string Icon { get; set; }
-        private double _opacity = 0;
+        private double _opacity = 1;
         public double Opacity
         {
             get => _opacity;

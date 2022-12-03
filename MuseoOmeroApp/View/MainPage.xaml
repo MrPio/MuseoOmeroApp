@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MuseoOmeroApp.View.MainPage"
              xmlns:tabs="http://sharpnado.com"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"             
              xmlns:viewModels="clr-namespace:MuseoOmeroApp.ViewModel"
              xmlns:templates="clr-namespace:MuseoOmeroApp.View.Templates"             
              xmlns:pages="clr-namespace:MuseoOmeroApp.Pages"
@@ -36,12 +37,13 @@
                 <tabs:DelayedView 
                 x:TypeArguments="pages:Home"
                 AccentColor="{StaticResource Primary}"
-                Animate="True"
                 BindingContext="{Binding HomeViewModel}"
+                Animate="True"
                 UseActivityIndicator="True" />
                 <tabs:DelayedView 
-                x:TypeArguments="pages:Prova"
+                x:TypeArguments="pages:IMieiTitoli"
                 AccentColor="{StaticResource Primary}"
+                    BindingContext="{Binding IMieiTitoliViewModel}"
                 Animate="True"
                 UseActivityIndicator="True" />
                 <!--<tabs:DelayedView 
@@ -59,11 +61,17 @@
         </Grid>
         
         <!-- TopBar-->
-        <templates:TopBar/>
+        <templates:TopBar BindingContext="{Binding TopBarViewModel}"/>
 
         <!-- Top & Bottom Waves-->
-        <templates:TopAndBottomWaves x:Name="TopAndBottomWaves" TranslationX="{Binding WavesTranslation}"/>
-        <templates:TopAndBottomWaves x:Name="TopAndBottomWaves2" TranslationX="{Binding Waves2Translation}"/>
+        <templates:TopAndBottomWaves 
+            x:Name="TopAndBottomWaves" 
+            BindingContext="{Binding TopAndBottomWavesViewModel}"
+            TranslationX="{Binding WavesTranslation}"/>
+        <templates:TopAndBottomWaves 
+            x:Name="TopAndBottomWaves2" 
+            BindingContext="{Binding TopAndBottomWavesViewModel}"
+            TranslationX="{Binding Waves2Translation}"/>
         
         <!-- BottomBar-->
         <Grid
@@ -87,5 +95,17 @@
                 <tabs:BottomTabItem x:Name="tab4" Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Comment}" LabelSize="{Binding FontSize4}" />
             </tabs:TabHostView>
         </Grid>
+
+        <!-- Startup Animation -->
+        <skia:SKLottieView
+            x:Name="Skia"
+                RepeatCount="0"
+            Source="air_ticket.json"
+            IsAnimationEnabled="False"            
+                HeightRequest="200"
+                WidthRequest="200"
+            
+                RepeatMode="Reverse"
+                HorizontalOptions="Center" />
     </Grid>
 </ContentPage>

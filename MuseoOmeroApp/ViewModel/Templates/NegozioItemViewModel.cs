@@ -1,5 +1,4 @@
-﻿using Java.Lang;
-using MuseoOmeroApp.Helpers;
+﻿using MuseoOmeroApp.Helpers;
 
 namespace MuseoOmeroApp.ViewModel.Templates
 {
