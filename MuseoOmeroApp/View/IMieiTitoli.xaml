@@ -11,19 +11,52 @@
              x:DataType="viewmodel:IMieiTitoliViewModel"
              BackgroundColor="{StaticResource Color4}">
 
-    <ContentView.Content>
-        <Grid>
             <!-- Screen content-->
             <ScrollView
+                x:DataType="{x:Type x:String}"
+                Scrolled="ScrollView_Scrolled"
                 Padding="0,50,0,0"
                 Margin="30,0,30,0">
                 <VerticalStackLayout
                     Spacing="20">
-                    <Label>
-                        Ciao
-                    </Label>
+                    <BoxView HeightRequest="120" Color="Transparent"/>
+                    <Label Text="Lorem ipsum1111111111111"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
+                    <Label Text="Lorem ipsum"/>
                 </VerticalStackLayout>
             </ScrollView>
-        </Grid>
-    </ContentView.Content>
 </ContentView>

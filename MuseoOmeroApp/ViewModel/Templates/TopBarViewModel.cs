@@ -9,12 +9,12 @@ namespace MuseoOmeroApp.ViewModel.Templates
 
         [ObservableProperty]
         RoundedEntryViewModel _roundedEntryViewModel =
-            new("Ricerca", "", IconFont.TextBoxSearch,0.9,DPI.COL_2,1,2.6);
+            new("Ricerca", "", IconFont.Magnify,0.9,DPI.COL_2,1,2.6);
 
         [ObservableProperty]
-        string _title = "Anagrafica";
+        string title = "Anagrafica";
 
         [ObservableProperty]
-        double _ricercaOpacity=0;
+        double ricercaOpacity=0,translationY=0,opacity=1;
     }
 }

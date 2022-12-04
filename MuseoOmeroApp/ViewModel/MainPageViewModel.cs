@@ -10,7 +10,6 @@ namespace MuseoOmeroApp.ViewModel
 {
     public partial class MainPageViewModel:ObservableObject
     {
-
         [ObservableProperty]
         int _fontSize1 = 27;
         [ObservableProperty]
@@ -32,10 +31,10 @@ namespace MuseoOmeroApp.ViewModel
                 FontSize1 = 27; FontSize2 = 27; FontSize3 = 27; FontSize4 = 27;
                 switch (value)
                 {
-                    case 0: FontSize1 = 34; _topBarViewModel.Title = "Account"; break;
-                    case 1: FontSize2 = 34; _topBarViewModel.Title = "I miei titoli"; break;
-                    case 2: FontSize3 = 34; _topBarViewModel.Title = "Biglietteria"; break;
-                    case 3: FontSize4 = 34; _topBarViewModel.Title = "Prenotazioni"; break;
+                    case 0: FontSize1 = 34; topBarViewModel.Title = "Account"; break;
+                    case 1: FontSize2 = 34; topBarViewModel.Title = "I miei titoli"; break;
+                    case 2: FontSize3 = 34; topBarViewModel.Title = "Biglietteria"; break;
+                    case 3: FontSize4 = 34; topBarViewModel.Title = "Prenotazioni"; break;
                 }
             }
         }
@@ -54,11 +53,32 @@ namespace MuseoOmeroApp.ViewModel
         double _waves2Translation=DPI.WIDTH;
 
         [ObservableProperty]
-        TopBarViewModel _topBarViewModel=new();
+        TopBarViewModel topBarViewModel=new();
 
         [ObservableProperty]
         TopAndBottomWavesViewModel topAndBottomWavesViewModel=new();
 
+        [ObservableProperty]
+        double bottomBarTranslationX,bottomBarOpacity=1;
+
+        double wavesExpandFactor = 0;
+        public double WavesExpandFactor
+        {
+            get => wavesExpandFactor;
+            set {
+                wavesExpandFactor = value;
+                var easingValue = Easing.CubicIn.Ease(value);
+                var easingValueHalf = Easing.CubicIn.Ease(Math.Max(0,value-0.2));
+
+                TopAndBottomWavesViewModel.TopWaveTranslationY = -easingValue * 60;
+                TopAndBottomWavesViewModel.BottomWaveTranslationY = easingValue * 30;
+                TopBarViewModel.TranslationY = -easingValue * 30;
+                BottomBarTranslationX =  easingValue * 30;
+                BottomBarOpacity = 1 - easingValue;
+                TopBarViewModel.Opacity = 1 - easingValue * 1.5;
+                TopBarViewModel.RicercaOpacity = 1 - easingValue * 1.5;
+            }
+        }
     }
 }
     

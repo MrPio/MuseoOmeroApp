@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MuseoOmeroApp.View.MainPage"
+             x:Name="MainPagePage"
              xmlns:tabs="http://sharpnado.com"
              xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"             
              xmlns:viewModels="clr-namespace:MuseoOmeroApp.ViewModel"
@@ -9,6 +10,7 @@
              xmlns:pages="clr-namespace:MuseoOmeroApp.Pages"
              xmlns:helper="clr-namespace:MuseoOmeroApp.Helpers"
              x:DataType="viewModels:MainPageViewModel"     
+             BackgroundColor="{StaticResource Color4}"
              tabs:TouchEffect.Color="{StaticResource Color1}"
              Title="MainPage">
     
@@ -24,9 +26,8 @@
     
     <Grid>
         <!-- CenterScreen-->
-        <Grid RowDefinitions="64,*,28">
+        <Grid>
             <tabs:ViewSwitcher 
-            Grid.Row="1"
             x:Name="Switcher"
             Grid.RowSpan="3"
             Margin="0"
@@ -59,6 +60,47 @@
                 <!--<tabs:LazyView x:TypeArguments="pages:Home" Animate="True" />-->
             </tabs:ViewSwitcher>
         </Grid>
+
+        <!-- UnderTopBar-->
+        <Grid
+            RowDefinitions="auto,auto">
+            <Rectangle
+                Grid.Row="0" 
+                HeightRequest="30"
+                BackgroundColor="{StaticResource Color2}">
+            </Rectangle>
+            <Image
+                TranslationY="-4"
+                InputTransparent="False"
+                Grid.Row="1" 
+                Grid.RowSpan="2"
+                ScaleX="1.02"
+                Source="wave2.png" 
+                HorizontalOptions="Fill">
+            </Image>
+            <Label
+                Grid.Row="0" 
+                Grid.RowSpan="2"
+                Padding="6"
+                TextColor="{StaticResource Color5}"
+                FontSize="24"
+                HorizontalTextAlignment="Center"
+                FontFamily="Lato"
+                Text="I miei titoli">
+            </Label>
+        </Grid>
+        <!--UnderBottomBar-->
+        <Grid
+            RowDefinitions="*,auto">
+            <Image
+                TranslationY="1"
+                InputTransparent="False"
+                Grid.Row="1" 
+                ScaleX="1.02"
+                Source="wave.png" 
+                HorizontalOptions="Fill">
+            </Image>
+        </Grid>
         
         <!-- TopBar-->
         <templates:TopBar BindingContext="{Binding TopBarViewModel}"/>
@@ -76,9 +118,9 @@
         <!-- BottomBar-->
         <Grid
             RowDefinitions="*,auto"
->
+            TranslationY="{Binding BottomBarTranslationX}"
+            Opacity="{Binding BottomBarOpacity}">
             <tabs:TabHostView 
-                
                 Grid.Row="1"
                 HeightRequest="60"
                 Padding="32,0"
@@ -89,10 +131,10 @@
                 CornerRadius="30"
                 Orientation="Horizontal"
                 SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}">
-                <tabs:BottomTabItem x:Name="tab1" Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Home}" LabelSize="{Binding FontSize1}" />
+                <tabs:BottomTabItem x:Name="tab1"  Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Home}" LabelSize="{Binding FontSize1}" />
                 <tabs:BottomTabItem x:Name="tab2" Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Cart}" LabelSize="{Binding FontSize2}" />
-                <tabs:BottomTabItem x:Name="tab3" Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Navigation}" LabelSize="{Binding FontSize3}" />
-                <tabs:BottomTabItem x:Name="tab4" Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Comment}" LabelSize="{Binding FontSize4}" />
+                <tabs:BottomTabItem x:Name="tab3"  Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Navigation}" LabelSize="{Binding FontSize3}" />
+                <tabs:BottomTabItem x:Name="tab4"  Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Comment}" LabelSize="{Binding FontSize4}" />
             </tabs:TabHostView>
         </Grid>
 

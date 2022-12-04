@@ -16,11 +16,12 @@
             <RowDefinition Height="{Binding Intersection}"/>
             <RowDefinition Height="{Binding BottomWave}"/>
         </Grid.RowDefinitions>
-        
+
         <Rectangle
             Grid.Row="0" 
             Grid.RowSpan="2"
-            BackgroundColor="{StaticResource Color2}">
+            BackgroundColor="{StaticResource Color2}"
+            TranslationY="{Binding TopWaveTranslationY}">
         </Rectangle>
         <Image 
             InputTransparent="False"
@@ -28,7 +29,8 @@
             Grid.RowSpan="2"
             ScaleX="1.02"
             Source="wave2.png" 
-            HorizontalOptions="Fill"/>
+            HorizontalOptions="Fill"
+            TranslationY="{Binding TopWaveTranslationY}"/>
 
         <Image 
             InputTransparent="False"
@@ -36,11 +38,13 @@
             Grid.RowSpan="2"
             ScaleX="1.02"
             Source="wave.png" 
-            HorizontalOptions="Fill"/>
+            HorizontalOptions="Fill"
+            TranslationY="{Binding BottomWaveTranslationY}"/>
         <Rectangle
             Grid.Row="5" 
             Grid.RowSpan="2"
-            BackgroundColor="{StaticResource Color2}">
+            BackgroundColor="{StaticResource Color2}"
+            TranslationY="{Binding BottomWaveTranslationY}">
         </Rectangle>
     </Grid>
 </ContentView>

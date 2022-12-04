@@ -44,7 +44,7 @@ public partial class MainPage : ContentPage
 
                 var animation = new Animation
                 {
-                    {0,1,new Animation(v =>viewModel.TopAndBottomWavesViewModel.TopWave = new GridLength(v), viewModel.TopAndBottomWavesViewModel.TopWave.Value, 110,Easing.CubicInOut)},
+                    {0,1,new Animation(v =>viewModel.TopAndBottomWavesViewModel.TopWave = new GridLength(v), viewModel.TopAndBottomWavesViewModel.TopWave.Value, 114,Easing.CubicInOut)},
                     { 0.5,1,new Animation(v => viewModel.TopBarViewModel.RicercaOpacity = v, viewModel.TopBarViewModel.RicercaOpacity, 1,Easing.CubicInOut )}
                 };
                 var c = DeviceDisplay.MainDisplayInfo;
