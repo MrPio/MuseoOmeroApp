@@ -2,13 +2,12 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:MuseoOmeroApp.ViewModel.Templates"
-             xmlns:helpers="clr-namespace:MuseoOmeroApp.Helpers"      
-             xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              xmlns:tabs="http://sharpnado.com"             
-             x:Class="MuseoOmeroApp.View.Templates.Biglietto"
+             x:Class="MuseoOmeroApp.View.Templates.BigliettoView"
              x:DataType="viewModels:BigliettoViewModel">
 
     <Grid
+        Margin="0,8,0,8"
         RowDefinitions="auto,22,22">
         <Border
             Grid.Row="0"
@@ -67,8 +66,6 @@
             </Grid>
         </Border>
 
-
-
         <!--Vai al biglietto-->
         <Button 
             tabs:Commands.Tap="{Binding VaiAlBigliettoClickedCommand}"
@@ -89,7 +86,7 @@
         </Button>
         
         <tabs:TouchEffect.Color>
-            #44F4F4F4
+            #54F4F4F4
         </tabs:TouchEffect.Color>
     </Grid>
 </ContentView>

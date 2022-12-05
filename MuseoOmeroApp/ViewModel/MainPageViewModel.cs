@@ -82,6 +82,9 @@ namespace MuseoOmeroApp.ViewModel
                 TopBarViewModel.RicercaOpacity = 1 - easingValue * 1.5;
             }
         }
+
+        [ObservableProperty]
+        bool loading = false;
     }
 }
     

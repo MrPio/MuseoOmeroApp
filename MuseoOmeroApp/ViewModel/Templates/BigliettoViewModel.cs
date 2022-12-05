@@ -1,8 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using MuseoOmeroApp.Helpers;
+using MuseoOmeroApp.Models;
 using MuseoOmeroApp.View.Templates;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,23 +11,24 @@ namespace MuseoOmeroApp.ViewModel.Templates
 {
     public partial class BigliettoViewModel:ObservableObject
     {
-        public Biglietto View;
-
-        public BigliettoViewModel(DateTime data=default, 
-            string tipologiaBiglietto="Museo aperto", string turnoGuida="No turno guida.",
-            string icon=IconFont.TicketConfirmation)
-        {
-            Data = data;
-            TipologiaBiglietto = tipologiaBiglietto;
-            TurnoGuida = turnoGuida;
-            Icon = icon;
-        }
+        public BigliettoView View;
 
         [ObservableProperty]
         DateTime data;
 
         [ObservableProperty]
-        string tipologiaBiglietto,turnoGuida,icon;
+        string tipologiaBiglietto, turnoGuida, icon;
+
+        public BigliettoViewModel(Biglietto biglietto)
+        {
+            Data = biglietto.DataValidita;
+            TipologiaBiglietto = biglietto.Tipologia.Value;
+            TurnoGuida = biglietto.DataGuida==null?"No turno guida.":"Guida alle "+
+               biglietto.DataGuida?.ToString("HH:mm");
+            Icon = biglietto.Tipologia.Icon;
+        }
+
+
 
         [RelayCommand]
         void VaiAlBigliettoClicked()

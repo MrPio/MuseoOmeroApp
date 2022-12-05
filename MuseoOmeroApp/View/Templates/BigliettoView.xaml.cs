@@ -2,17 +2,19 @@ using MuseoOmeroApp.ViewModel.Templates;
 
 namespace MuseoOmeroApp.View.Templates;
 
-public partial class Biglietto : ContentView
+public partial class BigliettoView : ContentView
 {
-	public Biglietto()
+	public BigliettoView()
 	{
 		InitializeComponent();
 	}
 
     protected override void OnBindingContextChanged()
     {
-        base.OnBindingContextChanged();
-        ((BigliettoViewModel)BindingContext!).View = this;
+        base.OnBindingContextChanged(); 
+        if (BindingContext == null)
+            return;
+        ((BigliettoViewModel)BindingContext).View = this;
     }
 
     public void Button_Clicked()

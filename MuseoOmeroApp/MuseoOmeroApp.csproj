@@ -15,8 +15,10 @@
 		<ApplicationTitle>MuseoOmeroApp</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.mrgimme</ApplicationId>
+		<ApplicationId>com.mrpio.museoomeroapp</ApplicationId>
 		<ApplicationIdGuid>14c38ddf-4f69-4e03-b609-6477a186a670</ApplicationIdGuid>
+		<!--<AndroidLinkMode>None</AndroidLinkMode>
+		<AndroidDexTool>r8</AndroidDexTool>-->
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -75,6 +77,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="View\Templates\BigliettoView.xaml.cs">
+	    <DependentUpon>BigliettoView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="View\Templates\RoundedEntry.xaml.cs">
 	    <DependentUpon>RoundedEntry.xaml</DependentUpon>
 	  </Compile>
@@ -111,7 +116,7 @@
 	  <MauiXaml Update="View\TabbedHome.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Templates\Biglietto.xaml">
+	  <MauiXaml Update="View\Templates\BigliettoView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\Templates\BigRoundedIcon.xaml">

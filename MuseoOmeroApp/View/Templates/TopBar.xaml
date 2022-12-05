@@ -6,8 +6,8 @@
              xmlns:templates="clr-namespace:MuseoOmeroApp.View.Templates"             
              xmlns:viewModels="clr-namespace:MuseoOmeroApp.ViewModel.Templates"             
              x:Class="MuseoOmeroApp.View.Templates.TopBar"
-             x:DataType="viewModels:TopBarViewModel"
-             ZIndex="1">
+             x:DataType="viewModels:TopBarViewModel">
+    <!--ZIndex="1">-->
 
     <Grid
         TranslationY="{Binding TranslationY}"

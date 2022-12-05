@@ -1,26 +1,32 @@
+using MuseoOmeroApp.api;
 using MuseoOmeroApp.ViewModel;
+using MuseoOmeroApp.ViewModel.Templates;
 using Sharpnado.Tabs;
 using Sharpnado.Tabs.Effects;
 using SkiaSharp.Extended.UI.Controls;
-using System.Diagnostics;
-using System.Security.Principal;
-using System.Windows.Input;
+using System.Collections.ObjectModel;
 
 namespace MuseoOmeroApp.View;
 
 public partial class MainPage : ContentPage
 {
-    MainPageViewModel viewModel;
+    public MainPageViewModel ViewModel;
+    public ApiService Service;
     int _previousIndex = -1;
-	public MainPage(MainPageViewModel viewModel)
+	public MainPage(MainPageViewModel ViewModel,ApiService service)
 	{
         InitializeComponent();
-        this.viewModel = viewModel;
-		this.BindingContext= viewModel;
+        this.ViewModel = ViewModel;
+        this.Service = service;
+		this.BindingContext= ViewModel;
         TouchEffect.SetColor(tab1, Colors.Transparent);
         TouchEffect.SetColor(tab2, Colors.Transparent);
         TouchEffect.SetColor(tab3, Colors.Transparent);
         TouchEffect.SetColor(tab4, Colors.Transparent);
+        // Carico i biglietti dal servizio
+        //ViewModel.IMieiTitoliViewModel.Biglietti =
+        //    new ObservableCollection<BigliettoViewModel>(service.LoadBiglietti());
+
     }
 
     private void Switcher_PropertyChanging(object sender, PropertyChangingEventArgs e)
@@ -31,27 +37,13 @@ public partial class MainPage : ContentPage
         }
     }
 
-	private void Switcher_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-	{
-		if (e.PropertyName == "SelectedIndex" && _previousIndex!=-1)
-		{
+    private void Switcher_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == "SelectedIndex" && _previousIndex != -1)
+        {
             var currentIndex = ((ViewSwitcher)sender).SelectedIndex;
             if (currentIndex == 0)
-            {
-                Skia.IsAnimationEnabled = true;
-                Skia.Source = new SKFileLottieImageSource { File="air_ticket.json" };
-                Skia.IsVisible = true;
-
-                var animation = new Animation
-                {
-                    {0,1,new Animation(v =>viewModel.TopAndBottomWavesViewModel.TopWave =
-                    new GridLength(v), viewModel.TopAndBottomWavesViewModel.TopWave.Value, 114,Easing.CubicInOut)},
-                    { 0.5,1,new Animation(v => viewModel.TopBarViewModel.RicercaOpacity =
-                    v, viewModel.TopBarViewModel.RicercaOpacity, 1,Easing.CubicInOut )}
-                };
-                var c = DeviceDisplay.MainDisplayInfo;
-                animation.Commit(this, "TopAnimation", 16, 850, null, null);
-            }
+                OnIMieiTitoliAppearing();
             else
             {
                 Skia.IsVisible = false;
@@ -59,50 +51,62 @@ public partial class MainPage : ContentPage
 
                 var animation = new Animation
                 {
-                    {0,1,new Animation(v =>viewModel.TopAndBottomWavesViewModel.TopWave = new GridLength(v), viewModel.TopAndBottomWavesViewModel.TopWave.Value, 56,Easing.CubicInOut)},
-                    { 0,0.5,new Animation(v => viewModel.TopBarViewModel.RicercaOpacity = v, viewModel.TopBarViewModel.RicercaOpacity, 0,Easing.CubicInOut )}
+                    {0,1,new Animation(v =>ViewModel.TopAndBottomWavesViewModel.TopWave = new GridLength(v), ViewModel.TopAndBottomWavesViewModel.TopWave.Value, 56,Easing.CubicInOut)},
+                    { 0,0.5,new Animation(v => ViewModel.TopBarViewModel.RicercaOpacity = v, ViewModel.TopBarViewModel.RicercaOpacity, 0,Easing.CubicInOut )}
                 };
                 var c = DeviceDisplay.MainDisplayInfo;
                 animation.Commit(this, "TopAnimation", 16, 850, null, null);
             }
 
             if (currentIndex != _previousIndex)
-            {
-                var animation = new Animation
-                {
-                    {0,1,new Animation(v =>viewModel.TopAndBottomWavesViewModel.TopWaveTranslationY = v, viewModel.TopAndBottomWavesViewModel.TopWaveTranslationY, 0,Easing.CubicInOut)},
-                    {0,1,new Animation(v =>viewModel.TopAndBottomWavesViewModel.BottomWaveTranslationY = v, viewModel.TopAndBottomWavesViewModel.BottomWaveTranslationY, 0,Easing.CubicInOut)},
-                    {0,1,new Animation(v =>viewModel.TopBarViewModel.TranslationY = v, viewModel.TopBarViewModel.TranslationY, 0,Easing.CubicInOut)},
-                    {0,1,new Animation(v =>viewModel.BottomBarTranslationX = v, viewModel.BottomBarTranslationX, 0,Easing.CubicInOut)},
-                    {0,1,new Animation(v =>viewModel.BottomBarOpacity = v, Math.Max(0,viewModel.BottomBarOpacity), 1,Easing.CubicInOut)},
-                    {0,1,new Animation(v =>viewModel.TopBarViewModel.Opacity = v, Math.Max(0,viewModel.TopBarViewModel.Opacity), 1,Easing.CubicInOut)},
-                };
-                var c = DeviceDisplay.MainDisplayInfo;
-                animation.Commit(this, "ResetAnimation", 16, 850, null, null);
-            }
+                ResetTopBarAndWaves();
 
             if (currentIndex > _previousIndex)
-			{
-                // <---
-                var animation = new Animation
-                {
-                    {0,1,new Animation(v =>TopAndBottomWaves.TranslationX = v, 0, -DPI.WIDTH,Easing.CubicInOut)},
-                    { 0,1,new Animation(v => TopAndBottomWaves2.TranslationX = v, DPI.WIDTH, 0,Easing.CubicInOut )}
-                };
-                var c = DeviceDisplay.MainDisplayInfo;
-                animation.Commit(this, "WavesAnimation", 16, 500, null, null);
-            }
+                TabsTransition(true);
             else if (currentIndex < _previousIndex)
-			{
-                // --->
-                var animation = new Animation
-                {
-                    {0,1,new Animation(v =>TopAndBottomWaves.TranslationX = v, -DPI.WIDTH, 0,Easing.CubicInOut)},
-                    { 0,1,new Animation(v => TopAndBottomWaves2.TranslationX = v, 0, DPI.WIDTH ,Easing.CubicInOut)}
-                };
+                TabsTransition(false);
+        }
+    }
 
-                animation.Commit(this, "WavesAnimation", 16, 500, null, null);
-            }
-		}
-	}
+    private void OnIMieiTitoliAppearing()
+    {
+        Skia.IsAnimationEnabled = true;
+        Skia.Source = new SKFileLottieImageSource { File = "air_ticket.json" };
+        Skia.IsVisible = true;
+
+        var animation = new Animation
+        {
+            {0,1,new Animation(v =>ViewModel.TopAndBottomWavesViewModel.TopWave =
+            new GridLength(v), ViewModel.TopAndBottomWavesViewModel.TopWave.Value, 114,Easing.CubicInOut)},
+            { 0.5,1,new Animation(v => ViewModel.TopBarViewModel.RicercaOpacity =
+            v, ViewModel.TopBarViewModel.RicercaOpacity, 1,Easing.CubicInOut )}
+        };
+        var c = DeviceDisplay.MainDisplayInfo;
+        animation.Commit(this, "TopAnimation", 16, 850, null, null);
+    }
+    private void ResetTopBarAndWaves()
+    {
+        var animation = new Animation
+                {
+                    {0,1,new Animation(v =>ViewModel.TopAndBottomWavesViewModel.TopWaveTranslationY = v, ViewModel.TopAndBottomWavesViewModel.TopWaveTranslationY, 0,Easing.CubicInOut)},
+                    {0,1,new Animation(v =>ViewModel.TopAndBottomWavesViewModel.BottomWaveTranslationY = v, ViewModel.TopAndBottomWavesViewModel.BottomWaveTranslationY, 0,Easing.CubicInOut)},
+                    {0,1,new Animation(v =>ViewModel.TopBarViewModel.TranslationY = v, ViewModel.TopBarViewModel.TranslationY, 0,Easing.CubicInOut)},
+                    {0,1,new Animation(v =>ViewModel.BottomBarTranslationX = v, ViewModel.BottomBarTranslationX, 0,Easing.CubicInOut)},
+                    {0,1,new Animation(v =>ViewModel.BottomBarOpacity = v, Math.Max(0,ViewModel.BottomBarOpacity), 1,Easing.CubicInOut)},
+                    {0,1,new Animation(v =>ViewModel.TopBarViewModel.Opacity = v, Math.Max(0,ViewModel.TopBarViewModel.Opacity), 1,Easing.CubicInOut)},
+                };
+        var c = DeviceDisplay.MainDisplayInfo;
+        animation.Commit(this, "ResetAnimation", 16, 850, null, null);
+    }
+    private void TabsTransition(bool left)
+    {
+        var parameters= left? new[] { 0, -DPI.WIDTH, DPI.WIDTH, 0 } : new[] {  -DPI.WIDTH,0, 0, DPI.WIDTH };
+        var animation = new Animation
+                {
+                    {0,1,new Animation(v =>TopAndBottomWaves.TranslationX = v, parameters[0], parameters[1],Easing.CubicInOut)},
+                    { 0,1,new Animation(v => TopAndBottomWaves2.TranslationX = v, parameters[2], parameters[3],Easing.CubicInOut )}
+                };
+        var c = DeviceDisplay.MainDisplayInfo;
+        animation.Commit(this, "WavesAnimation", 16, 500, null, null);
+    }
 }

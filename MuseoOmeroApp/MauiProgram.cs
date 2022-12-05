@@ -31,7 +31,7 @@ public static class MauiProgram
 			})
 			.UseSkiaSharp()
 			.UseSharpnadoTabs(loggerEnable: false)
-            .ConfigureLifecycleEvents(events =>
+			.ConfigureLifecycleEvents(events =>
 			{
 #if ANDROID
 				events.AddAndroid(android => android.OnCreate((activity, bundle) => MakeStatusBarTranslucent(activity)));
@@ -44,12 +44,12 @@ public static class MauiProgram
 					activity.Window.SetNavigationBarColor(Android.Graphics.Color.Rgb(8, 112, 59));
 				}
 #endif
-			});
+			}).ConfigureSyncfusionCore();
 
-        builder.Services.AddSingleton<MainPage>();
+		builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<MainPageViewModel>();
 
-        builder.ConfigureSyncfusionCore();
+        //builder.ConfigureSyncfusionCore();
         return builder.Build();
 	}
 }

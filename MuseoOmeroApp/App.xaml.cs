@@ -11,8 +11,8 @@ namespace MuseoOmeroApp;
 
 public partial class App : Application
 {
-    const int WindowWidth = 500;
-    const int WindowHeight = 900;
+    const int WindowWidth = 480;
+    const int WindowHeight = 1000;
     public App()
     {
         InitializeComponent();
@@ -30,7 +30,7 @@ public partial class App : Application
 #endif
         });
 
-        MainPage = new MainPage(new MainPageViewModel());
+        MainPage = new MainPage(new MainPageViewModel(), new api.ApiService());
         DPI.mainPage = MainPage;
         return;
 

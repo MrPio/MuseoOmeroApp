@@ -13,7 +13,7 @@
              BackgroundColor="{StaticResource Color4}"
              tabs:TouchEffect.Color="{StaticResource Color1}"
              Title="MainPage">
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="BottomTab" TargetType="tabs:BottomTabItem">
@@ -23,7 +23,6 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
     <Grid>
         <!-- CenterScreen-->
         <Grid>
@@ -101,9 +100,6 @@
                 HorizontalOptions="Fill">
             </Image>
         </Grid>
-        
-        <!-- TopBar-->
-        <templates:TopBar BindingContext="{Binding TopBarViewModel}"/>
 
         <!-- Top & Bottom Waves-->
         <templates:TopAndBottomWaves 
@@ -115,6 +111,9 @@
             BindingContext="{Binding TopAndBottomWavesViewModel}"
             TranslationX="{Binding Waves2Translation}"/>
         
+        <!-- TopBar-->
+        <templates:TopBar BindingContext="{Binding TopBarViewModel}"/>
+
         <!-- BottomBar-->
         <Grid
             RowDefinitions="*,auto"
@@ -149,5 +148,18 @@
             
                 RepeatMode="Reverse"
                 HorizontalOptions="Center" />
+        
+        <!-- Loading screen -->
+        <Grid 
+            x:Name="Loading" 
+            IsVisible="{Binding Loading}">
+            <ActivityIndicator 
+                IsRunning="true"
+                Color="{StaticResource Color2}" 
+                WidthRequest="70"/>
+            <BoxView
+                Color="Black"
+                Opacity="0.3"/>
+        </Grid>
     </Grid>
 </ContentPage>

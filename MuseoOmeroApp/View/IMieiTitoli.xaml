@@ -7,31 +7,91 @@
              xmlns:effectsView="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              xmlns:templates="clr-namespace:MuseoOmeroApp.View.Templates"
              xmlns:viewmodel="clr-namespace:MuseoOmeroApp.ViewModel"
+             xmlns:tabs="http://sharpnado.com"             
+             
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodel:IMieiTitoliViewModel"
              BackgroundColor="{StaticResource Color4}">
 
-            <!-- Screen content-->
-        <ScrollView
-            Scrolled="ScrollView_Scrolled"
-            Padding="0,50,0,0"
-            Margin="30,0,30,0">
+    <!-- Screen content-->
+    <ScrollView
+        Scrolled="ScrollView_Scrolled"
+        Padding="0,50,0,0"
+        Margin="30,0,30,0">
+        <VerticalStackLayout>
+            <BoxView HeightRequest="120" Color="Transparent"/>
+            
+            <!--Aggiorna Button-->
+            <Grid
+                ColumnDefinitions="2*,auto">
+                <Label
+                    Text="Da convalidare e scaduti"
+                    FontSize="18"
+                    FontFamily="Lato"
+                    VerticalOptions="Center"/>
+                <Grid
+                    Grid.Column="1"
+                    ColumnDefinitions="38,*">
+                    <Button 
+                        tabs:Commands.Tap="{Binding AggiornaClickedCommand}"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        HeightRequest="32"
+                        Margin="0,0,2,0"
+                        CornerRadius="34"
+                        BackgroundColor="{StaticResource Color5}"
+                        BorderColor="{StaticResource Color3}"
+                        Padding="34,0,22,0"
+                        TextColor="{StaticResource Color1}"
+                        FontFamily="Lato"
+                        FontSize="17.4"
+                        Text="Aggiorna" 
+                        BorderWidth="4.0">
+                </Button>
+                    <Label
+                        FontFamily="MaterialDesignIcons"
+                        FontSize="24"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        TextColor="{StaticResource Color3}"
+                        Text="{Static helpers:IconFont.Refresh}"/>
+                    <tabs:TouchEffect.Color>
+                    #54F4F4F4
+                </tabs:TouchEffect.Color>
+                </Grid>
+            </Grid>
+            
+            <BoxView HeightRequest="16" Color="Transparent"/>
+            <Line
+                X1="0"
+                X2="130"
+                HorizontalOptions="Center"
+                Stroke="{StaticResource Color3}"
+                StrokeThickness="4"
+                StrokeLineCap="Round"/>
+            <BoxView HeightRequest="10" Color="Transparent"/>
             <VerticalStackLayout
-                Spacing="16">
-            <BoxView HeightRequest="110" Color="Transparent"/>
-            <CollectionView
-                ItemsSource="{Binding Biglietti}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout 
-                        ItemSpacing="10" 
-                        Orientation="Vertical"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
+            BindableLayout.ItemsSource="{Binding Biglietti}">
+                <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <templates:Biglietto/>
+                        <templates:BigliettoView/>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-    </CollectionView>
-    </VerticalStackLayout>
-        </ScrollView>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+
+            <!--<CollectionView
+                    ItemsSource="{Binding Biglietti}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout 
+                            Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <templates:BigliettoView/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>-->
+            <BoxView HeightRequest="80" Color="Transparent"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentView>

@@ -1,7 +1,10 @@
-﻿using MuseoOmeroApp.Models;
+﻿using MuseoOmeroApp.Enums;
+using MuseoOmeroApp.Models;
+using MuseoOmeroApp.ViewModel.Templates;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -45,6 +48,30 @@ namespace MuseoOmeroApp.api
                 return null;
 
             return JsonConvert.DeserializeObject<Login>(await response.Content.ReadAsStringAsync());
+        }
+
+        public async Task<IEnumerable<BigliettoViewModel>> LoadBiglietti(DateTime data=default)
+        {
+            var dataScelta=data==default?DateTime.Today:data;
+            //TODO
+            await Task.Delay(1000);
+            var biglietti= new List<Biglietto>()
+            {
+                new Biglietto(
+                    dataAcquisto:DateTime.ParseExact("10/10/2010","dd/MM/yyyy",CultureInfo.InvariantCulture),
+                    dataValidita:DateTime.Today,
+                    tipologia:TipoBiglietto.MuseoAperto,
+                    dataGuida:null
+                    ),
+                new Biglietto(
+                    dataAcquisto:DateTime.ParseExact("10/10/2010","dd/MM/yyyy",CultureInfo.InvariantCulture),
+                    dataValidita:DateTime.ParseExact("10/12/2022","dd/MM/yyyy",CultureInfo.InvariantCulture),
+                    tipologia:TipoBiglietto.Mostra,
+                    dataGuida:DateTime.Now
+                    ),
+            };
+            return from biglietto in biglietti select new BigliettoViewModel(biglietto);
+            
         }
 
     }
