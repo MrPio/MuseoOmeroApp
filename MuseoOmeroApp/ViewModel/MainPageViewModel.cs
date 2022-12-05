@@ -10,14 +10,17 @@ namespace MuseoOmeroApp.ViewModel
 {
     public partial class MainPageViewModel:ObservableObject
     {
+        const int UNSELECTED_FONT_SIZE = 25;
+        const int SELECTED_FONT_SIZE = 32;
+
         [ObservableProperty]
-        int _fontSize1 = 27;
+        int _fontSize1 = UNSELECTED_FONT_SIZE;
         [ObservableProperty]
-        int _fontSize2 = 27;
+        int _fontSize2 = UNSELECTED_FONT_SIZE;
         [ObservableProperty]
-        int _fontSize3 = 27;
+        int _fontSize3 = UNSELECTED_FONT_SIZE;
         [ObservableProperty]
-        int _fontSize4 = 27;
+        int _fontSize4 = UNSELECTED_FONT_SIZE;
 
         int _selectedViewModelIndex;
 
@@ -28,13 +31,14 @@ namespace MuseoOmeroApp.ViewModel
             {
                 _selectedViewModelIndex = value;
                 OnPropertyChanged(nameof(SelectedViewModelIndex));
-                FontSize1 = 27; FontSize2 = 27; FontSize3 = 27; FontSize4 = 27;
+                FontSize1 = UNSELECTED_FONT_SIZE; FontSize2 = UNSELECTED_FONT_SIZE; 
+                FontSize3 = UNSELECTED_FONT_SIZE; FontSize4 = UNSELECTED_FONT_SIZE;
                 switch (value)
                 {
-                    case 0: FontSize1 = 34; topBarViewModel.Title = "Account"; break;
-                    case 1: FontSize2 = 34; topBarViewModel.Title = "I miei titoli"; break;
-                    case 2: FontSize3 = 34; topBarViewModel.Title = "Biglietteria"; break;
-                    case 3: FontSize4 = 34; topBarViewModel.Title = "Prenotazioni"; break;
+                    case 0: FontSize1 = SELECTED_FONT_SIZE; topBarViewModel.Title = "I miei titoli"; break;
+                    case 1: FontSize2 = SELECTED_FONT_SIZE; topBarViewModel.Title = "Account"; break;
+                    case 2: FontSize3 = SELECTED_FONT_SIZE; topBarViewModel.Title = "Biglietteria"; break;
+                    case 3: FontSize4 = SELECTED_FONT_SIZE; topBarViewModel.Title = "Prenotazioni"; break;
                 }
             }
         }
@@ -68,7 +72,6 @@ namespace MuseoOmeroApp.ViewModel
             set {
                 wavesExpandFactor = value;
                 var easingValue = Easing.CubicIn.Ease(value);
-                var easingValueHalf = Easing.CubicIn.Ease(Math.Max(0,value-0.2));
 
                 TopAndBottomWavesViewModel.TopWaveTranslationY = -easingValue * 60;
                 TopAndBottomWavesViewModel.BottomWaveTranslationY = easingValue * 30;

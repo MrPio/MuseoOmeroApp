@@ -111,6 +111,9 @@
 	  <MauiXaml Update="View\TabbedHome.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\Templates\Biglietto.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\Templates\BigRoundedIcon.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -36,7 +36,7 @@ public partial class MainPage : ContentPage
 		if (e.PropertyName == "SelectedIndex" && _previousIndex!=-1)
 		{
             var currentIndex = ((ViewSwitcher)sender).SelectedIndex;
-            if (currentIndex == 1)
+            if (currentIndex == 0)
             {
                 Skia.IsAnimationEnabled = true;
                 Skia.Source = new SKFileLottieImageSource { File="air_ticket.json" };
@@ -44,8 +44,10 @@ public partial class MainPage : ContentPage
 
                 var animation = new Animation
                 {
-                    {0,1,new Animation(v =>viewModel.TopAndBottomWavesViewModel.TopWave = new GridLength(v), viewModel.TopAndBottomWavesViewModel.TopWave.Value, 114,Easing.CubicInOut)},
-                    { 0.5,1,new Animation(v => viewModel.TopBarViewModel.RicercaOpacity = v, viewModel.TopBarViewModel.RicercaOpacity, 1,Easing.CubicInOut )}
+                    {0,1,new Animation(v =>viewModel.TopAndBottomWavesViewModel.TopWave =
+                    new GridLength(v), viewModel.TopAndBottomWavesViewModel.TopWave.Value, 114,Easing.CubicInOut)},
+                    { 0.5,1,new Animation(v => viewModel.TopBarViewModel.RicercaOpacity =
+                    v, viewModel.TopBarViewModel.RicercaOpacity, 1,Easing.CubicInOut )}
                 };
                 var c = DeviceDisplay.MainDisplayInfo;
                 animation.Commit(this, "TopAnimation", 16, 850, null, null);
@@ -62,6 +64,21 @@ public partial class MainPage : ContentPage
                 };
                 var c = DeviceDisplay.MainDisplayInfo;
                 animation.Commit(this, "TopAnimation", 16, 850, null, null);
+            }
+
+            if (currentIndex != _previousIndex)
+            {
+                var animation = new Animation
+                {
+                    {0,1,new Animation(v =>viewModel.TopAndBottomWavesViewModel.TopWaveTranslationY = v, viewModel.TopAndBottomWavesViewModel.TopWaveTranslationY, 0,Easing.CubicInOut)},
+                    {0,1,new Animation(v =>viewModel.TopAndBottomWavesViewModel.BottomWaveTranslationY = v, viewModel.TopAndBottomWavesViewModel.BottomWaveTranslationY, 0,Easing.CubicInOut)},
+                    {0,1,new Animation(v =>viewModel.TopBarViewModel.TranslationY = v, viewModel.TopBarViewModel.TranslationY, 0,Easing.CubicInOut)},
+                    {0,1,new Animation(v =>viewModel.BottomBarTranslationX = v, viewModel.BottomBarTranslationX, 0,Easing.CubicInOut)},
+                    {0,1,new Animation(v =>viewModel.BottomBarOpacity = v, Math.Max(0,viewModel.BottomBarOpacity), 1,Easing.CubicInOut)},
+                    {0,1,new Animation(v =>viewModel.TopBarViewModel.Opacity = v, Math.Max(0,viewModel.TopBarViewModel.Opacity), 1,Easing.CubicInOut)},
+                };
+                var c = DeviceDisplay.MainDisplayInfo;
+                animation.Commit(this, "ResetAnimation", 16, 850, null, null);
             }
 
             if (currentIndex > _previousIndex)

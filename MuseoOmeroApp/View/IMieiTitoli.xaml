@@ -12,51 +12,26 @@
              BackgroundColor="{StaticResource Color4}">
 
             <!-- Screen content-->
-            <ScrollView
-                x:DataType="{x:Type x:String}"
-                Scrolled="ScrollView_Scrolled"
-                Padding="0,50,0,0"
-                Margin="30,0,30,0">
-                <VerticalStackLayout
-                    Spacing="20">
-                    <BoxView HeightRequest="120" Color="Transparent"/>
-                    <Label Text="Lorem ipsum1111111111111"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                    <Label Text="Lorem ipsum"/>
-                </VerticalStackLayout>
-            </ScrollView>
+        <ScrollView
+            Scrolled="ScrollView_Scrolled"
+            Padding="0,50,0,0"
+            Margin="30,0,30,0">
+            <VerticalStackLayout
+                Spacing="16">
+            <BoxView HeightRequest="110" Color="Transparent"/>
+            <CollectionView
+                ItemsSource="{Binding Biglietti}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        ItemSpacing="10" 
+                        Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <templates:Biglietto/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+    </CollectionView>
+    </VerticalStackLayout>
+        </ScrollView>
 </ContentView>

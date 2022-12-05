@@ -36,15 +36,15 @@
                 PropertyChanging="Switcher_PropertyChanging"
                 PropertyChanged="Switcher_PropertyChanged">
                 <tabs:DelayedView 
-                x:TypeArguments="pages:Home"
-                AccentColor="{StaticResource Primary}"
-                BindingContext="{Binding HomeViewModel}"
-                Animate="True"
-                UseActivityIndicator="True" />
-                <tabs:DelayedView 
                 x:TypeArguments="pages:IMieiTitoli"
                 AccentColor="{StaticResource Primary}"
                     BindingContext="{Binding IMieiTitoliViewModel}"
+                Animate="True"
+                UseActivityIndicator="True" />
+                <tabs:DelayedView 
+                x:TypeArguments="pages:Home"
+                AccentColor="{StaticResource Primary}"
+                BindingContext="{Binding HomeViewModel}"
                 Animate="True"
                 UseActivityIndicator="True" />
                 <!--<tabs:DelayedView 
@@ -131,8 +131,8 @@
                 CornerRadius="30"
                 Orientation="Horizontal"
                 SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}">
-                <tabs:BottomTabItem x:Name="tab1"  Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Home}" LabelSize="{Binding FontSize1}" />
-                <tabs:BottomTabItem x:Name="tab2" Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Cart}" LabelSize="{Binding FontSize2}" />
+                <tabs:BottomTabItem x:Name="tab1" Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Cart}" LabelSize="{Binding FontSize1}" />
+                <tabs:BottomTabItem x:Name="tab2"  Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Account}" LabelSize="{Binding FontSize2}" />
                 <tabs:BottomTabItem x:Name="tab3"  Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Navigation}" LabelSize="{Binding FontSize3}" />
                 <tabs:BottomTabItem x:Name="tab4"  Style="{StaticResource BottomTab}" Label="{x:Static helper:IconFont.Comment}" LabelSize="{Binding FontSize4}" />
             </tabs:TabHostView>

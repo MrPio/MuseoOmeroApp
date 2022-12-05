@@ -6,7 +6,7 @@ namespace MuseoOmeroApp.ViewModel.Templates
     {
         public RoundedEntryViewModel(string placeholder, string text, string icon,
             double fontScale=1, Color entryBorderColor=null, double borderTicknessFocused = 2.6,
-            double borderTicknessUnfocused=1)
+            double borderTicknessUnfocused=1, DateTime date=default, bool isDate = false)
         {
             Placeholder = placeholder;
             Text = text;
@@ -15,6 +15,9 @@ namespace MuseoOmeroApp.ViewModel.Templates
             EntryBorderColor = entryBorderColor??Color.FromHex("#c8c8c8");
             BorderTicknessFocused = borderTicknessFocused;
             BorderTicknessUnfocused= borderTicknessUnfocused;
+            Date = date==default?DateTime.Today:date;
+            IsDate = isDate;
+            isText = !isDate;
         }
 
         public string Placeholder { get; set; }
@@ -36,11 +39,12 @@ namespace MuseoOmeroApp.ViewModel.Templates
         Color _entryBorderColor;
 
         [ObservableProperty]
-        double _borderTicknessFocused;
+        double _borderTicknessFocused, _borderTicknessUnfocused;
 
         [ObservableProperty]
-        double _borderTicknessUnfocused;
+        DateTime date = DateTime.Today;
 
-
+        [ObservableProperty]
+        bool isDate = false, isText=true;
     }
 }

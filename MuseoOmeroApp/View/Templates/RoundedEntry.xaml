@@ -19,6 +19,11 @@
                 <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
                 <Setter Property="TextColor" Value="Black"></Setter>
             </Style>
+            <Style x:Key="DatePickerStyle" TargetType="DatePicker">
+                <Setter Property="FontFamily" Value="LatoLight"></Setter>
+                <Setter Property="FontSize" Value="{Binding FontSize}"></Setter>
+                <Setter Property="TextColor" Value="Black"></Setter>
+            </Style>
             <Style x:Key="IconStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="MaterialDesignIcons"></Setter>
                 <Setter Property="FontSize" Value="{Binding IconSize}"></Setter>
@@ -32,17 +37,30 @@
     <ContentView.Content>
         <Grid ColumnDefinitions="16,auto,*">
             <Border 
-                    x:Name="Border"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3"
-                    Style="{StaticResource EntryBorderStyle}">
-                <Entry 
+                x:Name="Border"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Style="{StaticResource EntryBorderStyle}">
+                <Grid>
+                    <Entry
+                        IsVisible="{Binding IsText}"                        
                         Placeholder="{Binding Placeholder}"
                         Text="{Binding Text}"
                         Style="{StaticResource EntryStyle}"
-                    Focused="Entry_Focused"
-                    Unfocused="Entry_Unfocused">
-                </Entry>
+                        Focused="Entry_Focused"
+                        Unfocused="Entry_Unfocused">
+                    </Entry>
+
+                    <DatePicker
+                        IsVisible="{Binding IsDate}"
+                        Date="{Binding Date}"
+                        DateSelected="DatePicker_DateSelected"
+                        Style="{StaticResource DatePickerStyle}"
+                        HorizontalOptions="Center"
+                        Focused="DatePicker_Focused"
+                        Unfocused="DatePicker_Unfocused">
+                    </DatePicker>
+                </Grid>
             </Border>
             <Label 
                 x:Name="Icon"
